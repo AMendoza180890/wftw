@@ -15,23 +15,23 @@
     <section class="content">
       <!-- Small boxes (Stat box) -->
         <?php 
-          $recursos = new dashboardHomeC();
-          $recursos -> dashboardRecursosC();
+          // $recursos = new dashboardHomeC();
+          // $recursos -> dashboardRecursosC();
         ?>
         <!-- ./col -->
         <?php
-          $cantidadUsuarios = new dashboardHomeC();
-          $cantidadUsuarios -> dashboardUsuariosC();
+          // $cantidadUsuarios = new dashboardHomeC();
+          // $cantidadUsuarios -> dashboardUsuariosC();
           ?>
         <!-- ./col -->
         <?php
-          $cantidadUsuariosAdministradores = new dashboardHomeC();
-          $cantidadUsuariosAdministradores -> dashboardUsuariosAdministradoresC();
+          // $cantidadUsuariosAdministradores = new dashboardHomeC();
+          // $cantidadUsuariosAdministradores -> dashboardUsuariosAdministradoresC();
         ?>
         <!-- ./col -->
         <?php
-        $cantidadUsuariosInvitados = new dashboardHomeC();
-        $cantidadUsuariosInvitados -> dashboardUsuariosInvitadosC();
+        // $cantidadUsuariosInvitados = new dashboardHomeC();
+        // $cantidadUsuariosInvitados -> dashboardUsuariosInvitadosC();
         ?>
         <!-- ./col -->
       </div>
@@ -47,8 +47,8 @@
         <section class="col-lg-5 connectedSortable">
           <!-- Calendar -->
           <?php
-             $recursosPorCategorias = new dashboardHomeC();
-             $recursosPorCategorias -> dashboardRecursosPorCategoriasC();
+            //  $recursosPorCategorias = new dashboardHomeC();
+            //  $recursosPorCategorias -> dashboardRecursosPorCategoriasC();
           ?>
           <!-- /.box -->
 

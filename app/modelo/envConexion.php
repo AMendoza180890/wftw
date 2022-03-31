@@ -1,7 +1,7 @@
 <?php
 namespace app\modelo;
 class envConexion{
-      private $datos;
+      public $datos;
       public function __construct()
       {
             // en variables
@@ -11,11 +11,11 @@ class envConexion{
             //  $PASSW = "3kaBZmmJ90zR";
       
             //conexion en local
-            $this->datos = array("DATABASENAME" => "bdtogether", 'SERVIDOR' => "localhost", 'USER' => "root", 'PASSW' =>"");
-      }
-
-      public function varEntorno(){
-            return $this->datos;
+            $this->datos = array(
+                  "DATABASENAME" => "bdtogether", 
+                  'SERVIDOR' => "localhost", 
+                  'USER' => "root", 
+                  'PASSW' =>"");
       }
 }
 ?>

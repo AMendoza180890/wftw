@@ -27,6 +27,9 @@
                 </thead>
                 <tbody>
                     <?php
+
+                        use app\controlador\usuariosC;
+
                         $mostrarUsuarios = new usuariosC;
                         $mostrarUsuarios -> listadeUsuarios();
 

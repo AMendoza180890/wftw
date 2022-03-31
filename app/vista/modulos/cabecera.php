@@ -2,9 +2,9 @@
     <!-- Logo -->
     <a href="inicio" class="logo">
       <!-- mini logo for sidebar mini 50x50 pixels -->
-      <span class="logo-mini"><b>TDD</b></span>
+      <span class="logo-mini"><b>WFTW</b></span>
       <!-- logo for regular state and mobile devices -->
-      <span class="logo-lg"><b>Campaign</b>TDD</span>
+      <span class="logo-lg"><b>Wheels for the</b>World</span>
     </a>
     <!-- Header Navbar: style can be found in header.less -->
     <nav class="navbar navbar-static-top">
@@ -21,9 +21,9 @@
               <?php
                 // tratamiento para la foto
               if ($_SESSION["foto"] == "") {
-                echo '<img src="vista/img/usuario/defecto.png" class="user-image" alt="User Image">';
+                echo '<img src="app/vista/img/usuario/defecto.png" class="user-image" alt="User Image">';
               }else{
-                echo '<img src="'.$_SESSION["foto"].'" class="user-image" alt="User Image">';
+                echo '<img src="app/'.$_SESSION["foto"].'" class="user-image" alt="User Image">';
               }
                 // carga de nombre usuario
                 echo '<span class="hidden-xs">'.$_SESSION["usuario"].'</span>';
@@ -40,6 +40,7 @@
                 </div>
               </li>
             </ul>
+
           </li>
         </ul>
       </div>

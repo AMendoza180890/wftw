@@ -1,6 +1,6 @@
 <div class="login-box">
   <div class="login-logo">
-    <a href="login"><b>Admin</b>Volunteers</a>
+    <a href="login">Wheel for the <b>World</b></a>
   </div>
   <!-- /.login-logo -->
   <div class="login-box-body">

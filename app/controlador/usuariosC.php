@@ -47,7 +47,7 @@ class usuariosC {
                     <td>'.$value["usuario"].'</td>
                     <td>'.$value["clave"].'</td>';
                     if (is_null($value["foto"]) || $value["foto"] == "") {
-                        echo '<td><img src="vista/img/usuario/defecto.png" class="user-image" width="40px" alt="User Image"></td>';
+                        echo '<td><img src="app/vista/img/usuario/defecto.png" class="user-image" width="40px" alt="User Image"></td>';
                     }else{
                         echo '<td><img src="'.$value["foto"].'" class="user-image" width="40px" alt="User Image"></td>';
                     }
