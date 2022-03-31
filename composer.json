@@ -1,0 +1,19 @@
+{
+    "name": "tesoros/wftw",
+    "description": "sistema para registro de para evento de ruedas para el mundo, Jony and friends",
+    "type": "project",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "app\\": "app/",
+            "app\\controlador\\": "app/controlador/",
+            "app\\modelo\\": "app/modelo/",
+            "app\\vista\\": "app/vista/"
+        }
+    },
+    "authors": [{
+        "name": "Allan Mendoza",
+        "email": "allanmaleman@gmail.com"
+    }],
+    "require": {}
+}
