@@ -1,6 +1,5 @@
 <?php
 namespace app\modelo;
-require_once '../../vendor/autoload.php';
 use app\modelo\conexionBD as ModeloConexionBD;
 use Exception;
 

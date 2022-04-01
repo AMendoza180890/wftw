@@ -33,7 +33,7 @@
                             <h2>Foto:</h2>
                             <input type="file" name="fotoEdit" id="fotoEdit">
                             <p class="help-block">peso maximo permitido 200 Mb</p>
-                            <img src="vista/img/usuario/defecto.png" alt="imagen" class="img-thumbnail visor" width="100px;">
+                            <img src="app/vista/img/usuario/defecto.png" alt="imagen" class="img-thumbnail visor" width="100px;">
                             <input type="hidden" name="fotoActual" id="fotoActual">
                         </div>
                     </div>
@@ -43,6 +43,9 @@
                     <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
                 </div>
                 <?php
+
+                    use app\controlador\usuariosC;
+
                     $actualizarUsuario  = new usuariosC();
                     $actualizarUsuario -> actualizarRegistroUsuarioC();
                 ?>

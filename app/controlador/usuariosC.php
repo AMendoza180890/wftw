@@ -1,8 +1,7 @@
 <?php
 
 namespace app\controlador;
-//require_once '../../vendor/autoload.php';
-use app\modelo\usuariosM as conexionUsuarioM;
+use app\modelo\usuariosM;
 use Exception;
 
 class usuariosC {
@@ -14,7 +13,7 @@ class usuariosC {
                     
                     $datosC = array("user" => $_POST["usuarioIngreso"], "pass" => $_POST["passWord"]);
 
-                    $inicioSesion = conexionUsuarioM::ingresoSesionUsuario($datosC);
+                    $inicioSesion = usuariosM::ingresoSesionUsuario($datosC);
                     
                     if ($inicioSesion) {
                         if ($inicioSesion["usuario"] == $_POST["usuarioIngreso"] && $inicioSesion["clave"] == $_POST["passWord"] && $inicioSesion["rolid"] == 1) {
@@ -39,7 +38,7 @@ class usuariosC {
 
     public function listadeUsuarios(){
         try {
-            $listaUsuario = conexionUsuarioM::listadeUsuariosM();
+            $listaUsuario = usuariosM::listadeUsuariosM();
             if($listaUsuario != 0){
                 foreach ($listaUsuario as $key => $value) {
                     echo '<tr>
@@ -72,7 +71,7 @@ class usuariosC {
                     // codigo de validacion de imagen
                     $rutaImagenProcesada = tratamientoImagen::tratamientoTipoImagen($_FILES["fotoNuevo"]["tmp_name"], $_FILES["fotoNuevo"]);
                     $datosNuevoUsuario = array("usuario"=>$_POST["usuarioNuevo"],"clave"=>$_POST["claveNuevo"],"rol"=>$_POST["rolNuevo"],"foto"=>$rutaImagenProcesada);                  
-                    $crearNuevoUsuario = conexionUsuarioM::registrarUsuariosM($datosNuevoUsuario);
+                    $crearNuevoUsuario = usuariosM::registrarUsuariosM($datosNuevoUsuario);
                     if ($crearNuevoUsuario == true) {
                             echo '<script>window.location="catusuarios"</script>';
                     }else{
@@ -86,7 +85,7 @@ class usuariosC {
     // esta funcion es para obtener informacion del usuario usuando jquery y ajax
     public static function editarRegistroUsuarioC($valor){
         try {      
-            $editarUsuario = conexionUsuarioM::editarRegistroUsuarioM($valor);
+            $editarUsuario = usuariosM::editarRegistroUsuarioM($valor);
             return $editarUsuario;
         } catch (Exception $ex) {
             echo 'Error -'.$ex;
@@ -104,7 +103,7 @@ class usuariosC {
                 
                 $datosActualizarUsuario = array("id"=>$_POST["idEdit"],"usuario"=>$_POST["usuarioEdit"],"clave"=>$_POST["claveEdit"],"rol"=>$_POST["rolEdit"],"foto"=>$rutaImagen);
 
-                $datosActualizados = conexionUsuarioM::actualizarRegistroUsuarioM($datosActualizarUsuario);
+                $datosActualizados = usuariosM::actualizarRegistroUsuarioM($datosActualizarUsuario);
 
                 if($datosActualizados == true){
                     echo '<script>window.location = "catusuarios"</script>';
@@ -112,7 +111,7 @@ class usuariosC {
                     echo 'Hay un error no se pudo realizar actualizacion';
                 }
             }
-        } catch (exception $ex) {
+        } catch (Exception $ex) {
             echo 'Error - '.$ex;
         }
     }
@@ -121,7 +120,7 @@ class usuariosC {
         try {
             if (isset($_GET["CodValor"])){
                 $codigoUsuario = $_GET["CodValor"];
-                $RespuestadesactivarUsuario = conexionUsuarioM::DesactivarRegistroUsuarioM($codigoUsuario);
+                $RespuestadesactivarUsuario = usuariosM::DesactivarRegistroUsuarioM($codigoUsuario);
                  if ($RespuestadesactivarUsuario == true) {
                      echo '<script>window.location="catusuario"</script>';
                  }else{

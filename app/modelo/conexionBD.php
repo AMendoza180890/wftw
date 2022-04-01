@@ -1,6 +1,6 @@
 <?php
 namespace app\modelo;
-require_once '../wftw/vendor/autoload.php';
+// require_once '../wftw/vendor/autoload.php';
 use Exception;
 use PDO;
 // require_once ('envConexion.php');

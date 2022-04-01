@@ -68,27 +68,7 @@ class usuariosM extends conexionBD{
                 $pdo ->execute();
 
                 return $pdo->fetch();
-            }else{
-                $pdo = conexionBD::conexion()->prepare("SELECT usuarios.id, usuarios.usuario, usuarios.clave, usuarios.foto, usuarios.rolid, catroles.catRolesDescripcion  FROM usuarios INNER JOIN catroles ON usuarios.rolid = catroles.rolid WHERE usuarios.id = :id");
-
-                $pdo ->bindParam("id", $datosEditarUsuario, PDO::PARAM_INT);
-
-                $pdo ->execute();
-
-                return $pdo->fetchAll();
             }
-            // $pdo = conexionBD::conexion()->prepare("UPDATE `usuarios` SET usuario=:usuario, clave=:clave, foto=:foto, rolid=:rolid WHERE id = :id");
-            // $pdo->bindParam("id",$datosEditarUsuario["id"],PDO::PARAM_STR);
-            // $pdo->bindParam("usuario", $datosEditarUsuario["usuario"], PDO::PARAM_STR);
-            // $pdo->bindParam("clave", $datosEditarUsuario["clave"], PDO::PARAM_STR);
-            // $pdo->bindParam("foto", $datosEditarUsuario["foto"], PDO::PARAM_STR);
-            // $pdo->bindParam("rolid", $datosEditarUsuario["rolid"], PDO::PARAM_INT);
-
-            // if ($pdo->execute()) {
-            //     return true;
-            // }else{
-            //     return false;
-            // }
 
         } catch (Exception $ex) {
             echo 'Error - '.$ex;

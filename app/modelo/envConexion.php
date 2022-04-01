@@ -12,7 +12,7 @@ class envConexion{
       
             //conexion en local
             $this->datos = array(
-                  "DATABASENAME" => "bdtogether", 
+                  "DATABASENAME" => "bdwftw", 
                   'SERVIDOR' => "localhost", 
                   'USER' => "root", 
                   'PASSW' =>"");
