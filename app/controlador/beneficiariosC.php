@@ -1,6 +1,7 @@
 <?php
 namespace app\controlador;
 use app\modelo\beneficiariosM;
+use app\controlador\tratamientoRecursos;
 use Exception;
 
 class beneficiariosC
@@ -84,24 +85,27 @@ class beneficiariosC
 
     public function actualizarDatosBeneficiario(){
         try {
-            if(isset($_POST["nombreApelido"])){
-                $rutaImagenProcesada = "app/vista/img/beneficiario/defecto.png";
-                if(isset($_FILES["fotoNuevo"]["tmp_name"])){
-                    $rutaImagenProcesada = tratamientoRecursos::tratamientoTipoImagenBeneficiario($_FILES["fotoNuevo"]["tmp_name"], $_FILES["fotoNuevo"]);
+            if(isset($_POST["nombreApelidoEdit"])){
+                
+                $rutaImagenProcesada = $_POST["fotoActual"];
+
+                if(isset($_FILES["fotoNuevoEdit"]["tmp_name"])){
+                    $rutaImagenProcesada = tratamientoRecursos::tratamientoTipoImagenBeneficiario($_FILES["fotoNuevoEdit"]["tmp_name"], $_FILES["fotoNuevoEdit"]);
                 }
 
                 $datosBeneficiarioActualizar  = array(
-                    "nombreApellido" => $_POST["nombreApelido"], 
-                    "fnacimiento" => $_POST["fnacimiento"],
-                    "direccion" => $_POST["direccion"],
-                    "celular" => $_POST["celular"],
-                    "telefono" => $_POST["telefono"],
-                    "referencia" => $_POST["referido"],
-                    "diagnostico" => $_POST["diagnostico"],
+                    "id" => $_POST["idedit"],
+                    "nombreApellido" => $_POST["nombreApelidoEdit"], 
+                    "fnacimiento" => $_POST["fnacimientoEdit"],
+                    "direccion" => $_POST["direccionEdit"],
+                    "celular" => $_POST["celularEdit"],
+                    "telefono" => $_POST["telefonoEdit"],
+                    "referencia" => $_POST["referidoEdit"],
+                    "diagnostico" => $_POST["diagnosticoEdit"],
                     "foto" => $rutaImagenProcesada,
-                    "nombreTutor" => $_POST["tutornombre"],
-                    "cedula" => $_POST["tutorcedula"],
-                    "parentesco" => $_POST["tutorparentesco"]);
+                    "nombreTutor" => $_POST["tutornombreEdit"],
+                    "cedula" => $_POST["tutorcedulaEdit"],
+                    "parentesco" => $_POST["tutorparentescoEdit"]);
                     
                 $datosGuardados = beneficiariosM::actualizarDatosBeneficiarioM($datosBeneficiarioActualizar);
         

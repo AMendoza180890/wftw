@@ -23,7 +23,6 @@ class beneficiarioA{
     }
 
     public function beneficiarioEditA(){
-        echo '<script>console.log("beneficiarioA");</script>';
         $valor = $this->id;
         $datosObtenidosBeneficiarios = beneficiariosC::obtenerDatosBeneficiarioC($valor);
         echo json_encode($datosObtenidosBeneficiarios);

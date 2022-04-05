@@ -23,7 +23,7 @@
               if ($_SESSION["foto"] == "") {
                 echo '<img src="app/vista/img/usuario/defecto.png" class="user-image" alt="User Image">';
               }else{
-                echo '<img src="app/'.$_SESSION["foto"].'" class="user-image" alt="User Image">';
+                echo '<img src="'.$_SESSION["foto"].'" class="user-image" alt="User Image">';
               }
                 // carga de nombre usuario
                 echo '<span class="hidden-xs">'.$_SESSION["usuario"].'</span>';

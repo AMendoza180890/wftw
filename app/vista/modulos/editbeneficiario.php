@@ -13,38 +13,40 @@
 
                         <div class="form-group">
                             <h2>Nombre y Apellido:</h2>
-                            <input type="text" class="form-control input-lg" name="nombreApelido" id="nombreApelido" required>
+                            <input type="text" class="form-control input-lg" name="nombreApelidoEdit" id="nombreApelidoEdit" required>
+                            <input type="hidden" name="idedit" id="idedit">
                         </div>
 
                         <div class="form-group">
                             <h2>Fecha Nacimiento:</h2>
-                            <input type="date" class="form-control input-lg" name="fnacimiento" id="fnacimiento" required>
+                            <input type="date" class="form-control input-lg" name="fnacimientoEdit" id="fnacimientoEdit" required>
                         </div>
 
                         <div class="form-group">
                             <h2>Direccion:</h2>
-                            <input type="text" class="form-control input-lg" name="direccion" id="direccion" required>
+                            <input type="text" class="form-control input-lg" name="direccionEdit" id="direccionEdit" required>
                         </div>
 
                         <div class="form-group">
                             <h2>Celular:</h2>
-                            <input type="text" class="form-control input-lg" name="celular" id="celular" required>
+                            <input type="text" class="form-control input-lg" name="celularEdit" id="celularEdit" required>
                         </div>
 
                         <div class="form-group">
                             <h2>Telefono Convencional:</h2>
-                            <input type="text" class="form-control input-lg" name="telefono" id="telefono" required>
+                            <input type="text" class="form-control input-lg" name="telefonoEdit" id="telefonoEdit" required>
                         </div>
 
                         <div class="form-group">
                             <h2>Referido por:</h2>
-                            <input type="text" class="form-control input-lg" name="referido" id="referido" required>
+                            <input type="text" class="form-control input-lg" name="referidoEdit" id="referidoEdit" required>
                         </div>
 
                         <div class="form-group">
                             <h2>Diagnostico</h2>
                             <!-- <input type="text" class="form-control input-lg" name="direccion" id="direccion" required> -->
-                            <select class="form-control input-lg" name="diagnostico" id="diagnostico">
+                            <select class="form-control input-lg" name="diagnosticoEdit" id="diagnosticoEdit">
+                                <option id="diagValor"></option>
                                 <option value="diagnostico1">diagnostico1</option>
                                 <option value="diagnostico2">diagnostico2</option>
                                 <option value="diagnostico3">diagnostico3</option>
@@ -53,7 +55,9 @@
 
                         <div class="form-group">
                             <h2>Foto:</h2>
-                            <input type="file" name="fotoNuevo" id="fotoNuevo">
+                            <input type="file" name="fotoNuevoEdit" id="fotoNuevoEdit">
+                            <img src="app/vista/img/beneficiario/defecto.png" alt="imagen" class="img-thumbnail visor" width="100px;">
+                            <input type="hidden" name="fotoActual" id="fotoActual">
                             <p class="help-block">peso maximo permitido 200 Mb</p>
                         </div>
                     </div>
@@ -66,18 +70,19 @@
 
                     <div class="form-group">
                         <h2>Nombre y Apellido</h2>
-                        <input type="text" class="form-control input-lg" name="tutornombre" id="tutornombre" required>
+                        <input type="text" class="form-control input-lg" name="tutornombreEdit" id="tutornombreEdit" required>
                     </div>
 
                     <div class="form-group">
                         <h2>Cedula:</h2>
-                        <input type="text" class="form-control input-lg" name="tutorcedula" id="tutorcedula" required>
+                        <input type="text" class="form-control input-lg" name="tutorcedulaEdit" id="tutorcedulaEdit" required>
                     </div>
 
                     <div class="form-group">
                         <h2>Parentesco:</h2>
                         <!-- <input type="text" class="form-control input-lg" name="direccion" id="direccion" required> -->
-                        <select class="form-control input-lg" name="tutorparentesco" id="tutorparentesco">
+                        <select class="form-control input-lg" name="tutorparentescoEdit" id="tutorparentescoEdit">
+                            <option id ="tutorValor"></option>
                             <option value="padre">padre</option>
                             <option value="madre">madre</option>
                             <option value="abuelo">abuelo</option>
