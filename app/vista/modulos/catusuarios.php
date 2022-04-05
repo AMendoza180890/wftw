@@ -5,6 +5,7 @@
     <h1>
       Gestor de Usuarios
     </h1>
+    <small id="helpcontent" class="form-text text-muted">(Puedes agregar, editar la informacion de los usuarios que pueden acceder al sistema)</small>
   </section>
   <!-- Main content -->
   <section class="content">

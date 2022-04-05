@@ -3,8 +3,9 @@
         'inicio' => "inicio" , 
         'catusuarios' => "catusuarios" , 
         'login' => "login" , 
-        'salir' => "salir" , 
-        'titulo' => 'titulo',
-        'mensajes'=> 'mensajes'
+        'salir' => "salir" ,
+        'catbeneficiario' => 'catbeneficiario',
+        'editbeneficiario' => 'editbeneficiario',
+        'crearbeneficiario' => 'crearbeneficiario'
     ]
 ?>

@@ -10,9 +10,9 @@
                 </a>
             </li>
             <li>
-                <a href="mensajes">
-                    <i class="fa fa-envelope-o"></i>
-                    <span>mensajes</span>
+                <a href="catbeneficiario">
+                    <i class="fa fa-user-o"></i>
+                    <span>Beneficiario</span>
                 </a>
             </li>
             <li>

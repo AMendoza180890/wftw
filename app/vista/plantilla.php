@@ -114,7 +114,7 @@ if(!headers_sent()){
 <!-- De aqui van los eventos de jquery personalizados-->
 <!-- Evento de obtejer informacion y desactivar Usuarios-->
 <script src="app/vista/js/usuario.js"></script>
-<script src="app/vista/js/seccion.js"></script>
+<script src="app/vista/js/beneficiario.js"></script>
 
 </body>
 <script>

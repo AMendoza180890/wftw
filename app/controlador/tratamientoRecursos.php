@@ -5,19 +5,29 @@ require_once '../../vendor/autoload.php';
 use Exception;
 
 class tratamientoRecursos {
-    public static function subirRecurso($nombreElemento,$elemento){
+    public static function tratamientoTipoImagenBeneficiario($nombreElemento, $elemento)
+    {
         try {
-            $rutaRecurso = "";
+            $rutaImagen = "";
             if (isset($nombreElemento) && !empty($nombreElemento)) {
-                $rutaCarpeta = "vista/recurso/";
-                $rutaRecurso = $rutaCarpeta.basename($elemento);
-                if (move_uploaded_file($nombreElemento, $rutaRecurso)) {
-                    return  $rutaRecurso;
+                if ($elemento["type"] == "image/jpeg") {
+                    $nombreImagen = mt_rand(10, 999);
+                    $rutaImagen = "app/vista/img/beneficiario/b" . $nombreImagen . ".jpg";
+                    $foto = imagecreatefromjpeg($nombreElemento);
+                    imagejpeg($foto, $rutaImagen);
                 }
+                if ($elemento["type"] == "image/png") {
+                    $nombreImagen = mt_rand(10, 999);
+                    $rutaImagen = "app/vista/img/beneficiario/b" . $nombreImagen . ".png";
+                    $foto = imagecreatefrompng($nombreElemento);
+                    imagepng($foto, $rutaImagen);
+                }
+                return $rutaImagen;
+            } else {
+                return $rutaImagen;
             }
-            return $rutaRecurso;
         } catch (Exception $ex) {
-            echo 'Error - '.$ex;
+            echo 'Error - ' . $ex;
         }
     }
 }
