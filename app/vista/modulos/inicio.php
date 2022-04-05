@@ -14,9 +14,12 @@
     <!-- Main content -->
     <section class="content">
       <!-- Small boxes (Stat box) -->
-        <?php 
-          // $recursos = new dashboardHomeC();
-          // $recursos -> dashboardRecursosC();
+        <?php
+
+          use app\controlador\homeC;
+
+           $recursos = new homeC();
+           $recursos -> dashboardUsuariosC();
         ?>
         <!-- ./col -->
         <?php
@@ -47,13 +50,23 @@
         <section class="col-lg-5 connectedSortable">
           <!-- Calendar -->
           <?php
-            //  $recursosPorCategorias = new dashboardHomeC();
-            //  $recursosPorCategorias -> dashboardRecursosPorCategoriasC();
+              $recursosPorCategorias = new homeC();
+              $recursosPorCategorias -> dashboardCantidadPorDiscapacidadC();
           ?>
           <!-- /.box -->
 
         </section>
         <!-- right col -->
+
+        <section class="col-lg-5 connectedSortable">
+          <!-- Calendar -->
+          <?php
+              $recursosPorCategorias = new homeC();
+              $recursosPorCategorias -> dashboardBeneficiarioPorEdadC();
+          ?>
+          <!-- /.box -->
+
+        </section>
       </div>
       <!-- /.row (main row) -->
 

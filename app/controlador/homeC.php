@@ -1,9 +1,13 @@
 <?php
+namespace app\controlador;
 
-class dashboardHomeC{
-    public function dashboardRecursosC(){
+use app\modelo\homeM;
+use Exception;
+
+class homeC{
+    public function dashboardBeneficiarioRegistradoC(){
         try {
-            $totalRecursos = dashboardHomeM::dashboardRecursosM();
+            $totalRecursos = homeM::dashboardTotalBeneficiarioRegistradoM();
 
             if ($totalRecursos != null || !empty($totalRecursos)) {
                 echo '<div class="row">
@@ -39,14 +43,14 @@ class dashboardHomeC{
                     </div>';
             }
             
-        } catch (exception $ex) {
+        } catch (Exception $ex) {
             echo 'Error -'.$ex;
         }
     }
 
     public function dashboardUsuariosC(){
         try {
-            $totalUsuarios = dashboardHomeM::dashboardUsuariosM();
+            $totalUsuarios = homeM::dashboardUsuariosM();
 
             if ($totalUsuarios != 0 || !empty($totalUsuarios)) {
                 echo '<div class="col-lg-3 col-xs-6">
@@ -84,80 +88,80 @@ class dashboardHomeC{
         }
     }
 
-    public function dashboardUsuariosInvitadosC(){
-        try {
-            $totalUsuariosInvitados = dashboardHomeM::dashboardUsuariosInvitadosM();
+    // public function dashboardUsuariosInvitadosC(){
+    //     try {
+    //         $totalUsuariosInvitados = dashboardHomeM::dashboardUsuariosInvitadosM();
 
-            if ($totalUsuariosInvitados != 0 || !empty($totalUsuariosInvitados)) {
-                echo '<div class="col-lg-3 col-xs-6">
-                <!-- small box -->
-                <div class="small-box bg-red">
-                  <div class="inner">
-                    <h3>'.$totalUsuariosInvitados["total"].'</h3>
+    //         if ($totalUsuariosInvitados != 0 || !empty($totalUsuariosInvitados)) {
+    //             echo '<div class="col-lg-3 col-xs-6">
+    //             <!-- small box -->
+    //             <div class="small-box bg-red">
+    //               <div class="inner">
+    //                 <h3>'.$totalUsuariosInvitados["total"].'</h3>
       
-                    <p>Total Usuarios Invitados</p>
-                  </div>
-                  <div class="icon">
-                    <i class="ion ion-person-add"></i>
-                  </div>
-                  <a href="catusuarios" class="small-box-footer">Click más información <i class="fa fa-arrow-circle-right"></i></a>
-                </div>
-              </div>';
-            }else{
-                echo '<div class="col-lg-3 col-xs-6">
-                <!-- small box -->
-                <div class="small-box bg-red">
-                  <div class="inner">
-                    <h3>N/A</h3>
+    //                 <p>Total Usuarios Invitados</p>
+    //               </div>
+    //               <div class="icon">
+    //                 <i class="ion ion-person-add"></i>
+    //               </div>
+    //               <a href="catusuarios" class="small-box-footer">Click más información <i class="fa fa-arrow-circle-right"></i></a>
+    //             </div>
+    //           </div>';
+    //         }else{
+    //             echo '<div class="col-lg-3 col-xs-6">
+    //             <!-- small box -->
+    //             <div class="small-box bg-red">
+    //               <div class="inner">
+    //                 <h3>N/A</h3>
       
-                    <p>Total Usuarios Invitados</p>
-                  </div>
-                  <div class="icon">
-                    <i class="ion ion-person-add"></i>
-                  </div>
-                  <a href="catusuarios" class="small-box-footer">Click más información <i class="fa fa-arrow-circle-right"></i></a>
-                </div>
-              </div>';
-            }
-        } catch (exception $ex) {
-            echo 'Error -'.$ex;
-        }
-    }
+    //                 <p>Total Usuarios Invitados</p>
+    //               </div>
+    //               <div class="icon">
+    //                 <i class="ion ion-person-add"></i>
+    //               </div>
+    //               <a href="catusuarios" class="small-box-footer">Click más información <i class="fa fa-arrow-circle-right"></i></a>
+    //             </div>
+    //           </div>';
+    //         }
+    //     } catch (exception $ex) {
+    //         echo 'Error -'.$ex;
+    //     }
+    // }
 
-    public function dashboardUsuariosAdministradoresC(){
-        try {
+    // public function dashboardUsuariosAdministradoresC(){
+    //     try {
 
-            $usuariosAdministradores = dashboardHomeM::dashboardUsuariosAdministradoresM();
+    //         $usuariosAdministradores = dashboardHomeM::dashboardUsuariosAdministradoresM();
 
-            if ($usuariosAdministradores != 0 || !empty($usuariosAdministradores)) {
-                echo '<div class="col-lg-3 col-xs-6">
-                <!-- small box -->
-                 <div class="small-box bg-green">
-                  <div class="inner">
-                    <h3>'.$usuariosAdministradores["total"].'</h3>
+    //         if ($usuariosAdministradores != 0 || !empty($usuariosAdministradores)) {
+    //             echo '<div class="col-lg-3 col-xs-6">
+    //             <!-- small box -->
+    //              <div class="small-box bg-green">
+    //               <div class="inner">
+    //                 <h3>'.$usuariosAdministradores["total"].'</h3>
       
-                    <p>Usuarios Administradores</p>
-                  </div>
-                  <div class="icon">
-                    <i class="ion ion-stats-bars"></i>
-                  </div>
-                  <a href="catusuarios" class="small-box-footer">Click más información <i class="fa fa-arrow-circle-right"></i></a>
-                </div>
-              </div> ';
-            } else{
-                echo '';
-            }
+    //                 <p>Usuarios Administradores</p>
+    //               </div>
+    //               <div class="icon">
+    //                 <i class="ion ion-stats-bars"></i>
+    //               </div>
+    //               <a href="catusuarios" class="small-box-footer">Click más información <i class="fa fa-arrow-circle-right"></i></a>
+    //             </div>
+    //           </div> ';
+    //         } else{
+    //             echo '';
+    //         }
 
-        } catch (exception $ex) {
-            echo 'Error -'.$ex;
-        }
-    }
+    //     } catch (exception $ex) {
+    //         echo 'Error -'.$ex;
+    //     }
+    // }
 
-    public function dashboardRecursosPorCategoriasC(){
+    public function dashboardCantidadPorDiscapacidadC(){
         try {
-            $ListaRecursosPorCategorias = dashboardHomeM::dashboardRecursosPorCategoriasM();
+            $conteoPorDiscapacidad = homeM::dashboardCantidadPorDiscapacidad();
 
-            if ($ListaRecursosPorCategorias != false || !empty($ListaRecursosPorCategorias)) {
+            if ($conteoPorDiscapacidad != false || !empty($conteoPorDiscapacidad)) {
                 echo '<div class="box box-solid bg-green-gradient">
                 <div class="box-header">
                   <i class="fa fa-book"></i>
@@ -183,9 +187,58 @@ class dashboardHomeC{
                   <div class="row">
                     <div class="col-sm-6">';
                     /*Aqui se agregan los recursos */
-                foreach ($ListaRecursosPorCategorias as $key => $value) {
+                foreach ($conteoPorDiscapacidad as $key => $value) {
                         echo  '<div class="clearfix">
-                                 <span class="pull-left">'.$value["etiqueta"].'</span>
+                                 <span class="pull-left">'.$value["diagnostico"].'</span>
+                                 <small class="pull-right">'.$value["total"].'</small>
+                               </div>';   
+                }
+
+                   echo  '</div>
+                    <!-- /.col -->
+                  </div>
+                  <!-- /.row -->
+                </div>
+              </div>';
+            }
+        } catch (exception $ex) {
+            echo 'Error -'.$ex;
+        }
+    }
+
+    public function dashboardBeneficiarioPorEdadC(){
+        try {
+            $conteoPorEdad = homeM::dashboardBeneficiarioPorEdad();
+
+            if ($conteoPorEdad != false || !empty($conteoPorEdad)) {
+                echo '<div class="box box-solid bg-green-gradient">
+                <div class="box-header">
+                  <i class="fa fa-book"></i>
+    
+                  <h3 class="box-title">Recursos por categorias</h3>
+                  <!-- tools box -->
+                  <div class="pull-right box-tools">
+                    <!-- button with a dropdown -->
+                    <button type="button" class="btn btn-success btn-sm" data-widget="collapse"><i class="fa fa-minus"></i>
+                    </button>
+                    <button type="button" class="btn btn-success btn-sm" data-widget="remove"><i class="fa fa-times"></i>
+                    </button>
+                  </div>
+                  <!-- /. tools -->
+                </div>
+                <!-- /.box-header -->
+                <div class="box-body no-padding">
+                  <!--The calendar -->
+                  <div id="calendar" style="width: 100%"></div>
+                </div>
+                <!-- /.box-body -->
+                <div class="box-footer text-black">
+                  <div class="row">
+                    <div class="col-sm-6">';
+                    /*Aqui se agregan los recursos */
+                foreach ($conteoPorEdad as $key => $value) {
+                        echo  '<div class="clearfix">
+                                 <span class="pull-left">'.$value["edad"].'</span>
                                  <small class="pull-right">'.$value["total"].'</small>
                                </div>';   
                 }
