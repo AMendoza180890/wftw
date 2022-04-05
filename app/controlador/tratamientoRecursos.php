@@ -1,7 +1,6 @@
 <?php
 
 namespace app\controlador;
-require_once '../../vendor/autoload.php';
 use Exception;
 
 class tratamientoRecursos {

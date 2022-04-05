@@ -88,7 +88,7 @@
 
                 </div>
                 <div class="modal-footer">
-                    <button type="submit" class="btn btn-primary">Crear</button>
+                    <button type="submit" class="btn btn-primary">Actualizar</button>
                     <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
                 </div>
 
@@ -97,6 +97,9 @@
     </div>
 </div>
 <?php
-// $actualizarAyuda  = new tituloController();
-// $actualizarAyuda->actualizartituloC();
+
+use app\controlador\beneficiariosC;
+
+$actualizarAyuda  = new beneficiariosC();
+$actualizarAyuda->actualizarDatosBeneficiario();
 ?>

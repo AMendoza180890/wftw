@@ -37,8 +37,8 @@
             $mostrarBeneficiarios = new beneficiariosC;
             $mostrarBeneficiarios -> mostrarListaBeneficiarioC();
 
-            // $valor = null;
-            // $editarUsuario = usuariosC::editarRegistroUsuarioC($valor);
+            $valor = null;
+            $editarUsuario = beneficiariosC::obtenerDatosBeneficiarioC($valor);
             ?>
           </tbody>
         </table>
