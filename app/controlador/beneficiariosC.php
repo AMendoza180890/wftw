@@ -2,6 +2,8 @@
 namespace app\controlador;
 use app\modelo\beneficiariosM;
 use app\controlador\tratamientoRecursos;
+use DateTime;
+use DateTimeZone;
 use Exception;
 
 class beneficiariosC
@@ -23,7 +25,7 @@ class beneficiariosC
                         <td>
                             <div class="btn-group">
                                 <button class="btn btn-success editarRegistroBeneficiario" codValor=' . $value["id"] . '><i data-toggle="modal" data-target="#editarbeneficiario" class="fa fa-pencil"></i></button>
-                                <button style="display:none;" class="btn btn-danger DesactivarRegistroUsuario" codValor=' . $value["id"] . '><i class="fa fa-times"></i></button>
+                                <button class="btn btn-danger DesactivarRegistroBeneficiario" codValor=' . $value["id"] . '><i class="fa fa-times"></i></button>
                             </div>
                         </td>
                     </tr>';
@@ -42,6 +44,12 @@ class beneficiariosC
                 if(isset($_FILES["fotoNuevo"]["tmp_name"])){
                     $rutaImagenProcesada = tratamientoRecursos::tratamientoTipoImagenBeneficiario($_FILES["fotoNuevo"]["tmp_name"], $_FILES["fotoNuevo"]);
                 }
+                
+                //OBTENER Y DAR FORMATO LA FECHA DE MANAGUA
+                $dtz = new DateTimeZone("America/Managua");
+                $dt = new DateTime("now", $dtz);
+                //Stores time as "2021-04-04T13:35:48":
+                $currentTime = $dt->format("Y-m-d") . "T" . $dt->format("H:i:s");
 
                 $datosBeneficiario  = array(
                     "nombreApellido" => $_POST["nombreApelido"], 
@@ -54,7 +62,8 @@ class beneficiariosC
                     "foto" => $rutaImagenProcesada,
                     "nombreTutor" => $_POST["tutornombre"],
                     "cedula" => $_POST["tutorcedula"],
-                    "parentesco" => $_POST["tutorparentesco"]);
+                    "parentesco" => $_POST["tutorparentesco"],
+                    "fcreacion" => $currentTime);
                     
                 $datosGuardados = beneficiariosM::datosGuardarBeneficiarioM($datosBeneficiario);
         
@@ -93,6 +102,12 @@ class beneficiariosC
                     $rutaImagenProcesada = tratamientoRecursos::tratamientoTipoImagenBeneficiario($_FILES["fotoNuevoEdit"]["tmp_name"], $_FILES["fotoNuevoEdit"]);
                 }
 
+                //OBTENER Y DAR FORMATO LA FECHA DE MANAGUA
+                $dtz = new DateTimeZone("America/Managua");
+                $dt = new DateTime("now", $dtz);
+                //Stores time as "2021-04-04T13:35:48":
+                $currentTime = $dt->format("Y-m-d") . "T" . $dt->format("H:i:s");
+
                 $datosBeneficiarioActualizar  = array(
                     "id" => $_POST["idedit"],
                     "nombreApellido" => $_POST["nombreApelidoEdit"], 
@@ -105,7 +120,9 @@ class beneficiariosC
                     "foto" => $rutaImagenProcesada,
                     "nombreTutor" => $_POST["tutornombreEdit"],
                     "cedula" => $_POST["tutorcedulaEdit"],
-                    "parentesco" => $_POST["tutorparentescoEdit"]);
+                    "parentesco" => $_POST["tutorparentescoEdit"],
+                    "factualizacion" => $currentTime
+                );
                     
                 $datosGuardados = beneficiariosM::actualizarDatosBeneficiarioM($datosBeneficiarioActualizar);
         
@@ -117,6 +134,34 @@ class beneficiariosC
             }
         } catch (exception $ex) {
             echo 'error: '.$ex->getMessage();
+        }
+    }
+
+    public function desactivarBeneficiarioC()
+    {
+        try {
+            if (isset($_GET["CodValor"])) {
+                //OBTENER Y DAR FORMATO LA FECHA DE MANAGUA
+                $dtz = new DateTimeZone("America/Managua");
+                $dt = new DateTime("now", $dtz);
+                //Stores time as "2021-04-04T13:35:48":
+                $currentTime = $dt->format("Y-m-d") . "T" . $dt->format("H:i:s");
+
+                $codigo = $_GET["CodValor"];
+
+                $datosDesactivarBeneficiario = array("id"=>$codigo, "fechaBaja" => $currentTime);
+
+                $DesactivarBeneficiario = beneficiariosM::desactivarBeneficiarioM($datosDesactivarBeneficiario);
+
+                if ($DesactivarBeneficiario == true) {
+                    echo '<script>window.location="catbeneficiario"</script>';
+                } else {
+                    echo 'Error - Ocurrio un error al hora de insertar';
+                }
+
+            }
+        } catch (exception $ex) {
+            echo 'error ' . $ex->getMessage();
         }
     }
 }
