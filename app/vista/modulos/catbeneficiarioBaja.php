@@ -4,29 +4,29 @@
   <!-- Content Header (Page header) -->
   <section class="content-header">
     <h1>
-      Lista de Beneficiarios Activos
+      Lista de Beneficiarios dados de Baja
     </h1>
-    <small id="helpcontent" class="form-text text-muted">(Puedes agregar, editar y consultar la informacion de los Beneficiarios)</small>
+    <small id="helpcontent" class="form-text text-muted">(Muestra lista de los beneficiarios dados de baja, puedes darles de alta)</small>
   </section>
   <!-- Main content -->
   <section class="content">
     <!-- Default box -->
     <div class="box">
-      <div class="box-header with-border">
+      <!-- <div class="box-header with-border">
         <button class="btn btn-primary" data-toggle="modal" data-target="#crearBeneficiario">Ingrear Beneficiario</button>
-      </div>
+      </div> -->
       <div class="box-body">
         <table class="table table-bordered table-hover table-striped TablaUsuario" id="tbl">
           <thead>
             <tr>
               <th>Nº</th>
               <th>Nombre Completo</th>
-              <th>FNacimiento</th>
+              <th>Fecha Baja</th>
               <th>Diagnostico</th>
               <th>Cedula</th>
               <th>Telefono</th>
               <th>Nombre Tutor</th>
-              <th>Editar/Desactivar</th>
+              <th>Activar</th>
             </tr>
           </thead>
           <tbody>
@@ -35,10 +35,7 @@
             use app\controlador\beneficiariosC;
 
             $mostrarBeneficiarios = new beneficiariosC;
-            $mostrarBeneficiarios -> mostrarListaBeneficiarioC();
-
-            $valor = null;
-            $editarUsuario = beneficiariosC::obtenerDatosBeneficiarioC($valor);
+            $mostrarBeneficiarios -> mostrarListaBeneficiarioBajaC();
             ?>
           </tbody>
         </table>
@@ -50,10 +47,7 @@
   <!-- /.content -->
 </div>
 <!-- /.content-wrapper -->
-<?php include 'crearbeneficiario.php'; ?>
-<?php include 'editbeneficiario.php'; ?>
-
 <?php
-    $desactivarBeneficiario = new beneficiariosC();
-    $desactivarBeneficiario ->desactivarBeneficiarioC();
+    $activarBeneficiario = new beneficiariosC();
+    $activarBeneficiario -> activarBeneficiarioC();
 ?>

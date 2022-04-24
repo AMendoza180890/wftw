@@ -8,6 +8,7 @@ use Exception;
 
 class beneficiariosC
 {
+    // mostrar en lista del beneficiario activos.
     public function mostrarListaBeneficiarioC()
     {
         try {
@@ -25,7 +26,7 @@ class beneficiariosC
                         <td>
                             <div class="btn-group">
                                 <button class="btn btn-success editarRegistroBeneficiario" codValor=' . $value["id"] . '><i data-toggle="modal" data-target="#editarbeneficiario" class="fa fa-pencil"></i></button>
-                                <button class="btn btn-danger DesactivarRegistroBeneficiario" codValor=' . $value["id"] . '><i class="fa fa-times"></i></button>
+                                <button class="btn btn-danger desactivarRegistroBeneficiario" codValor=' . $value["id"] . '><i class="fa fa-times"></i></button>
                             </div>
                         </td>
                     </tr>';
@@ -36,6 +37,63 @@ class beneficiariosC
         }
     }
 
+    // mostrar en lista del beneficiario dado de bajas.
+    public function mostrarListaBeneficiarioBajaC()
+    {
+        try {
+            $ListaBeneficiarioBaja = beneficiariosM::mostrarListaBeneficiarioBajaM();
+            if ($ListaBeneficiarioBaja != 0) {
+                foreach ($ListaBeneficiarioBaja as $key => $value) {
+                    echo '<tr>
+                        <td>' . $value["id"] . '</td>
+                        <td>' . $value["nombreApellido"] . '</td>
+                        <td>' . $value["fechaBaja"] . '</td>
+                        <td>' . $value["diagnostico"] . '</td>
+                        <td>' . $value["celular"] . '</td>
+                        <td>' . $value["telefono"] . '</td>
+                        <td>' . $value["nombreTutor"] . '</td>
+                        <td>
+                            <div class="btn-group">
+                                <button class="btn btn-success activarBeneficiario" codValor=' . $value["id"] . '><i class="fa fa-pencil"></i></button>
+                            </div>
+                        </td>
+                    </tr>';
+                }
+            }
+        } catch (exception $ex) {
+            echo 'error:' . $ex->getMessage();
+        }
+    }
+
+    // mostrar en lista del beneficiario atendidos.
+    public function mostrarListaBeneficiarioAtendidosC()
+    {
+        try {
+            $ListaBeneficiarioBaja = beneficiariosM::mostrarListaBeneficiarioAtendidosM();
+            if ($ListaBeneficiarioBaja != 0) {
+                foreach ($ListaBeneficiarioBaja as $key => $value) {
+                    echo '<tr>
+                        <td>' . $value["id"] . '</td>
+                        <td>' . $value["nombreApellido"] . '</td>
+                        <td>' . $value["fechaAtendidos"] . '</td>
+                        <td>' . $value["diagnostico"] . '</td>
+                        <td>' . $value["celular"] . '</td>
+                        <td>' . $value["telefono"] . '</td>
+                        <td>' . $value["nombreTutor"] . '</td>
+                        <td>
+                            <div class="btn-group">
+                                <button class="btn btn-success editarRegistroBeneficiario" codValor=' . $value["id"] . '><i data-toggle="modal" data-target="#editarbeneficiario" class="fa fa-pencil"></i></button>
+                            </div>
+                        </td>
+                    </tr>';
+                }
+            }
+        } catch (exception $ex) {
+            echo 'error:' . $ex->getMessage();
+        }
+    }
+
+//guardar informacion del beneficiario
     public function datosGuardarBeneficiarioC()
     {
         try {
@@ -58,6 +116,9 @@ class beneficiariosC
                     "celular" => $_POST["celular"],
                     "telefono" => $_POST["telefono"],
                     "referencia" => $_POST["referido"],
+                    "tipoMedio" => $_POST["tMedio"],
+                    "estadoMedio" => $_POST["eMedio"],
+                    "apoyoMedio" => $_POST["nApoyo"],
                     "diagnostico" => $_POST["diagnostico"],
                     "foto" => $rutaImagenProcesada,
                     "nombreTutor" => $_POST["tutornombre"],
@@ -79,7 +140,7 @@ class beneficiariosC
         }
     }
 
-
+//recuperar informacion del beneficiario para el formulario
     public static function obtenerDatosBeneficiarioC($valor)
     {
         try {
@@ -91,7 +152,7 @@ class beneficiariosC
             echo 'error:' . $ex->getMessage();
         }
     }
-
+//actualizar al beneficiario
     public function actualizarDatosBeneficiario(){
         try {
             if(isset($_POST["nombreApelidoEdit"])){
@@ -116,6 +177,9 @@ class beneficiariosC
                     "celular" => $_POST["celularEdit"],
                     "telefono" => $_POST["telefonoEdit"],
                     "referencia" => $_POST["referidoEdit"],
+                    "tipoMedio" => $_POST["tMedioEdit"],
+                    "estadoMedio" => $_POST["eMedioEdit"],
+                    "apoyoMedio" => $_POST["nApoyoEdit"],
                     "diagnostico" => $_POST["diagnosticoEdit"],
                     "foto" => $rutaImagenProcesada,
                     "nombreTutor" => $_POST["tutornombreEdit"],
@@ -136,7 +200,7 @@ class beneficiariosC
             echo 'error: '.$ex->getMessage();
         }
     }
-
+// dar de baja al beneficiario.
     public function desactivarBeneficiarioC()
     {
         try {
@@ -159,6 +223,24 @@ class beneficiariosC
                     echo 'Error - Ocurrio un error al hora de insertar';
                 }
 
+            }
+        } catch (exception $ex) {
+            echo 'error ' . $ex->getMessage();
+        }
+    }
+
+    //dar de alta al beneficiario
+    public function activarBeneficiarioC()
+    {
+        try {
+            if (isset($_GET["CodValor"])) {
+                $codigo = $_GET["CodValor"];
+                $activarBeneficiario = beneficiariosM::activarBeneficiarioM($codigo);
+                if ($activarBeneficiario == true) {
+                    echo '<script>window.location="catbeneficiarioBaja"</script>';
+                } else {
+                    echo 'Error - Ocurrio un error al hora de insertar';
+                }
             }
         } catch (exception $ex) {
             echo 'error ' . $ex->getMessage();

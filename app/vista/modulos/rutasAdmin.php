@@ -5,6 +5,9 @@
         'login' => "login" , 
         'salir' => "salir" ,
         'catbeneficiario' => 'catbeneficiario',
+        'catbeneficiarioBaja' => 'catbeneficiarioBaja',
+        'catbeneficiarioAtendido' => 'catbeneficiarioAtendido',
+        'showbeneficiarioInfo' => 'showbeneficiarioInfo',        
         'editbeneficiario' => 'editbeneficiario',
         'crearbeneficiario' => 'crearbeneficiario'
     ]

@@ -6,42 +6,42 @@
                     <button type="button" class="close" data-dismiss="modal">
                         <li class="fa fa-time"></li>
                     </button>
-                    <h3>Editar Informacion Beneficiario</h3>
+                    <h3>Informacion Beneficiario</h3>
                 </div>
                 <div class="modal-body">
                     <div class="box-body">
 
                         <div class="form-group">
                             <h2>Nombre y Apellido:</h2>
-                            <input type="text" class="form-control input-lg" name="nombreApelidoEdit" id="nombreApelidoEdit" required>
+                            <input type="text" class="form-control input-lg" name="nombreApelidoEdit" id="nombreApelidoEdit" disabled>
                             <input type="hidden" name="idedit" id="idedit">
                         </div>
 
                         <div class="form-group">
                             <h2>Fecha Nacimiento:</h2>
-                            <input type="date" class="form-control input-lg" name="fnacimientoEdit" id="fnacimientoEdit" required>
+                            <input type="date" class="form-control input-lg" name="fnacimientoEdit" id="fnacimientoEdit" disabled>
                         </div>
 
                         <div class="form-group">
                             <h2>Edad</h2>
-                            <input type="text" class="form-control input-lg" name="edadEdit" id="edadEdit" required>
+                            <input type="text" class="form-control input-lg" name="edadEdit" id="edadEdit" disabled>
                         </div>
 
                         <div class="form-group">
                             <h2>Direccion:</h2>
-                            <input type="text" class="form-control input-lg" name="direccionEdit" id="direccionEdit" required>
+                            <input type="text" class="form-control input-lg" name="direccionEdit" id="direccionEdit" disabled>
                         </div>
 
                         <div class="form-group">
                             <h2>Referido por:</h2>
-                            <input type="text" class="form-control input-lg" name="referidoEdit" id="referidoEdit" required>
+                            <input type="text" class="form-control input-lg" name="referidoEdit" id="referidoEdit" disabled>
                         </div>
 
                         <div class="form-group">
                             <h2>Tipo de Medio </h2>
                             <small id="helpcontent" class="form-text text-muted">(Describe el tipo de medio que usa actualmente)</small>
-                            <!-- <input type="text" class="form-control input-lg" name="direccion" id="direccion" required> -->
-                            <select class="form-control input-lg" name="tMedioEdit" id="tMedioEdit" required>
+                            <!-- <input type="text" class="form-control input-lg" name="direccion" id="direccion" disabled> -->
+                            <select class="form-control input-lg" name="tMedioEdit" id="tMedioEdit" disabled>
                                 <option id="tMedioValue"></option>
                                 <option value="No Tengo">No Tengo</option>
                                 <option value="Silla de Ruedas">Silla de Ruedas</option>
@@ -54,8 +54,8 @@
                         <div class="form-group">
                             <h2>Estado del de Medio </h2>
                             <small id="helpcontent" class="form-text text-muted">(Describe el estado del Medio Auxiliar)</small>
-                            <!-- <input type="text" class="form-control input-lg" name="direccion" id="direccion" required> -->
-                            <select class="form-control input-lg" name="eMedioEdit" id="eMedioEdit" required>
+                            <!-- <input type="text" class="form-control input-lg" name="direccion" id="direccion" disabled> -->
+                            <select class="form-control input-lg" name="eMedioEdit" id="eMedioEdit" disabled>
                                 <option id="eMedioValue"></option>
                                 <option value="No Tengo">No Tengo</option>
                                 <option value="Mal estado">Mal estado</option>
@@ -66,8 +66,8 @@
                         <div class="form-group">
                             <h2>Nivel de apoyo </h2>
                             <small id="helpcontent" class="form-text text-muted">(Describe el nivel de apoyo que necesita con el medio)</small>
-                            <!-- <input type="text" class="form-control input-lg" name="direccion" id="direccion" required> -->
-                            <select class="form-control input-lg" name="nApoyoEdit" id="nApoyoEdit" required>
+                            <!-- <input type="text" class="form-control input-lg" name="direccion" id="direccion" disabled> -->
+                            <select class="form-control input-lg" name="nApoyoEdit" id="nApoyoEdit" disabled>
                                 <option id="nApoyoValue"></option>
                                 <option value="No Aplica">No Aplica</option>
                                 <option value="Ninguno">Ninguno</option>
@@ -78,7 +78,7 @@
 
                         <div class="form-group">
                             <h2>Diagnostico</h2>
-                            <!-- <input type="text" class="form-control input-lg" name="direccion" id="direccion" required> -->
+                            <!-- <input type="text" class="form-control input-lg" name="direccion" id="direccion" disabled> -->
                             <select class="form-control input-lg" name="diagnosticoEdit" id="diagnosticoEdit">
                                 <option id="diagValor"></option>
                                 <option value="diagnostico1">diagnostico1</option>
@@ -89,7 +89,6 @@
 
                         <div class="form-group">
                             <h2>Foto:</h2>
-                            <input type="file" name="fotoNuevoEdit" id="fotoNuevoEdit">
                             <img src="app/vista/img/beneficiario/defecto.png" alt="imagen" class="img-thumbnail visor" width="100px;">
                             <input type="hidden" name="fotoActual" id="fotoActual">
                             <p class="help-block">peso maximo permitido 200 Mb</p>
@@ -104,27 +103,27 @@
 
                     <div class="form-group">
                         <h2>Nombre y Apellido</h2>
-                        <input type="text" class="form-control input-lg" name="tutornombreEdit" id="tutornombreEdit" required>
+                        <input type="text" class="form-control input-lg" name="tutornombreEdit" id="tutornombreEdit" disabled>
                     </div>
 
                     <div class="form-group">
                         <h2>Celular:</h2>
-                        <input type="text" class="form-control input-lg" name="celularEdit" id="celularEdit" required>
+                        <input type="text" class="form-control input-lg" name="celularEdit" id="celularEdit" disabled>
                     </div>
 
                     <div class="form-group">
                         <h2>Telefono Convencional:</h2>
-                        <input type="text" class="form-control input-lg" name="telefonoEdit" id="telefonoEdit" required>
+                        <input type="text" class="form-control input-lg" name="telefonoEdit" id="telefonoEdit" disabled>
                     </div>
 
                     <div class="form-group">
                         <h2>Cedula:</h2>
-                        <input type="text" class="form-control input-lg" name="tutorcedulaEdit" id="tutorcedulaEdit" required>
+                        <input type="text" class="form-control input-lg" name="tutorcedulaEdit" id="tutorcedulaEdit" disabled>
                     </div>
 
                     <div class="form-group">
                         <h2>Parentesco:</h2>
-                        <!-- <input type="text" class="form-control input-lg" name="direccion" id="direccion" required> -->
+                        <!-- <input type="text" class="form-control input-lg" name="direccion" id="direccion" disabled> -->
                         <select class="form-control input-lg" name="tutorparentescoEdit" id="tutorparentescoEdit">
                             <option id="tutorValor"></option>
                             <option value="padre">padre</option>
@@ -137,18 +136,10 @@
 
                 </div>
                 <div class="modal-footer">
-                    <button type="submit" class="btn btn-primary">Actualizar</button>
-                    <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
                 </div>
 
             </form>
         </div>
     </div>
 </div>
-<?php
-
-use app\controlador\beneficiariosC;
-
-$actualizarAyuda  = new beneficiariosC();
-$actualizarAyuda->actualizarDatosBeneficiario();
-?>
