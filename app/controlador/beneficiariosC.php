@@ -6,9 +6,12 @@ use DateTime;
 use DateTimeZone;
 use Exception;
 
+use FPDF;
+require_once ('fpdf/fpdf.php');
+
 
 //require_once '../librerias/dompdf/autoload.inc.php';
-use Dompdf\Dompdf;
+//use Dompdf\Dompdf;
 
 class beneficiariosC
 {
@@ -270,7 +273,12 @@ class beneficiariosC
 
                 $beneficiarioAtendido = beneficiariosM::beneficiarioAtendido($beneficiarioAtendidoParametros);
                 if (!empty($beneficiarioAtendido)) {
-                   reporteBeneficiario::reporteBeneficiarioC();
+                    $pdf = new FPDF();
+                    $pdf->AddPage();
+                    $pdf->SetFont('Arial','B',16);
+                    $pdf->Cell(40,10,'Hello World!');
+                    $pdf->Output();
+                   //reporteBeneficiario::reporteBeneficiarioC();
 
                 } else {
                     echo 'Error - Ocurrio un error al hora de insertar';

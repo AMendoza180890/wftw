@@ -1,43 +1,54 @@
 <?php
 namespace app\controlador;
-require_once 'dompdf/autoload.inc.php';
-use Dompdf\Dompdf;
+use FPDF;
+require_once ('fpdf/fpdf.php');
+//DOMPDF
+// require_once 'dompdf/autoload.inc.php';
+// use Dompdf\Dompdf;
 class reporteBeneficiario{
     public static function reporteBeneficiarioC(){
-        ob_clean();
-        echo '<!DOCTYPE html>
-        <html lang="en">
-        <head>
-            <meta charset="UTF-8">
-            <meta http-equiv="X-UA-Compatible" content="IE=edge">
-            <meta name="viewport" content="width=device-width, initial-scale=1.0">
-            <title>Document</title>
-        </head>
+        // ob_clean();
+        // echo '<!DOCTYPE html>
+        // <html lang="en">
+        // <head>
+        //     <meta charset="UTF-8">
+        //     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        //     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        //     <title>Document</title>
+        // </head>
         
-        <body>
-            <h1>Titulo del documento a imprimir</h1>
-            <p>parrafo del contenido</p>
-            <p>nombre:</p>
-        </body>
-        </html>';
-        $html = ob_get_clean();
+        // <body>
+        //     <h1>Titulo del documento a imprimir</h1>
+        //     <p>parrafo del contenido</p>
+        //     <p>nombre:</p>
+        // </body>
+        // </html>';
+        // $html = ob_get_clean();
+        
+        //FPDF
+        $pdf = new FPDF();
+        $pdf->AddPage();
+        $pdf->SetFont('Arial','B',16);
+        $pdf->Cell(40,10,'Hello World!');
+        $pdf->Output();
+        //DOMPDF
         // instantiate and use the dompdf class
-        $dompdf = new Dompdf();
+        // $dompdf = new Dompdf();
         
-        $options = $dompdf->getOptions();
-        $options -> set(array('isRemoteEnabled' => true));
-        $dompdf -> setOptions($options);
+        // $options = $dompdf->getOptions();
+        // $options -> set(array('isRemoteEnabled' => true));
+        // $dompdf -> setOptions($options);
         
-        $dompdf->loadHtml($html);
+        // $dompdf->loadHtml($html);
         
-        // (Optional) Setup the paper size and orientation
-        $dompdf->setPaper('letter');
+        // // (Optional) Setup the paper size and orientation
+        // $dompdf->setPaper('letter');
         
-        // Render the HTML as PDF
-        $dompdf->render();
+        // // Render the HTML as PDF
+        // $dompdf->render();
         
-        // Output the generated PDF to Browser
-        $dompdf->stream("nombrearchivo.pdf");
+        // // Output the generated PDF to Browser
+        // $dompdf->stream("nombrearchivo.pdf");
     }
 }
 ?>

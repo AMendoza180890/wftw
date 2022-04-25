@@ -178,7 +178,7 @@ class beneficiariosM extends conexionBD
             WHERE id=:id");
 
             $pdo->bindparam(":id", $datosBeneficiarioAtendido["id"], PDO::PARAM_INT);
-            $pdo->bindparam(":fechaAtencion", $datosBeneficiarioAtendido["fechaAtendido"], PDO::PARAM_INT);
+            $pdo->bindparam(":fechaAtencion", $datosBeneficiarioAtendido["fechaAtendido"], PDO::PARAM_STR);
 
             if($pdo->execute()) {
                 $obtenerDatosBeneficiarioAtendido = beneficiariosM::obtenerDatosBeneficiarioM($datosBeneficiarioAtendido["id"]);

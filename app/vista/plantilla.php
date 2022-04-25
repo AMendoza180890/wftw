@@ -1,4 +1,4 @@
-<?php if(!headers_sent($i,$f)){
+<?php if(!headers_sent()){
   session_start();
 }
 ?>
@@ -65,9 +65,7 @@
     include "modulos/login.php";
 }
   ?>
-
 <!-- ./wrapper -->
-
 <!-- jQuery 3 -->
 <script src="app/vista/bower_components/jquery/dist/jquery.min.js"></script>
 <!-- jQuery UI 1.11.4 -->

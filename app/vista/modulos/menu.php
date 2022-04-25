@@ -26,16 +26,12 @@
                     <span>Beneficiarios Atendidos</span>
                 </a>
             </li>
-            <?php
-            if ($_SESSION["rol"] == "Administrador") {
-                echo '<li>
-                            <a title="Administracion de los Usuarios" href="catusuarios">
-                                <i class="fa fa-user"></i>
-                                <span>Usuarios</span>
-                            </a>
-                        </li>';
-                        }
-            ?>
+            <li>
+                <a title="Administracion de los Usuarios" href="catusuarios">
+                <i class="fa fa-user"></i>
+                <span>Usuarios</span>
+                </a>
+            </li>
         </ul>
     </section>
     <!-- /.sidebar -->

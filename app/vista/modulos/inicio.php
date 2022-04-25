@@ -47,8 +47,8 @@
         <section class="col-lg-5 connectedSortable">
           <!-- Calendar -->
           <?php
-              $recursosPorCategorias = new homeC();
-              $recursosPorCategorias -> dashboardCantidadPorDiscapacidadC();
+              // $recursosPorCategorias = new homeC();
+              // $recursosPorCategorias -> dashboardCantidadPorDiscapacidadC();
           ?>
           <!-- /.box -->
 
@@ -58,8 +58,8 @@
         <section class="col-lg-5 connectedSortable">
           <!-- Calendar -->
           <?php
-              $recursosPorCategorias = new homeC();
-              $recursosPorCategorias -> dashboardBeneficiarioPorEdadC();
+              // $recursosPorCategorias = new homeC();
+              // $recursosPorCategorias -> dashboardBeneficiarioPorEdadC();
           ?>
           <!-- /.box -->
         </section>
