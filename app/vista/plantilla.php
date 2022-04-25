@@ -1,5 +1,4 @@
-<?php
-if(!headers_sent()){
+<?php if(!headers_sent($i,$f)){
   session_start();
 }
 ?>
@@ -48,13 +47,10 @@ if(!headers_sent()){
 <?php  
   if (isset($_SESSION["ingreso"]) && $_SESSION["ingreso"] == true) {
     echo '<div class="wrapper">';
-    
     include 'modulos/cabecera.php';
     include 'modulos/menu.php';
     include 'modulos/rutasAdmin.php';
       //global $rutasAdmin;
-
-    
     if (isset($_GET["ruta"])) {
       if ($rutasAdmin[$_GET["ruta"]]) {
         include "modulos/".$_GET["ruta"].".php";

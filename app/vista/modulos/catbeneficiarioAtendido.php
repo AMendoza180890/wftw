@@ -31,12 +31,9 @@
           </thead>
           <tbody>
             <?php
-
             use app\controlador\beneficiariosC;
-
             $mostrarBeneficiarios = new beneficiariosC;
             $mostrarBeneficiarios -> mostrarListaBeneficiarioAtendidosC();
-
             $valor = null;
             $showInfBeneficiarioAtendido = beneficiariosC::obtenerDatosBeneficiarioC($valor);
             ?>

@@ -28,12 +28,9 @@
           </thead>
           <tbody>
             <?php
-
             use app\controlador\usuariosC;
-
             $mostrarUsuarios = new usuariosC;
             $mostrarUsuarios->listadeUsuarios();
-
             $valor = null;
             $editarUsuario = usuariosC::editarRegistroUsuarioC($valor);
             ?>

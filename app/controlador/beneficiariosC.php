@@ -6,6 +6,10 @@ use DateTime;
 use DateTimeZone;
 use Exception;
 
+
+//require_once '../librerias/dompdf/autoload.inc.php';
+use Dompdf\Dompdf;
+
 class beneficiariosC
 {
     // mostrar en lista del beneficiario activos.
@@ -27,6 +31,7 @@ class beneficiariosC
                             <div class="btn-group">
                                 <button class="btn btn-success editarRegistroBeneficiario" codValor=' . $value["id"] . '><i data-toggle="modal" data-target="#editarbeneficiario" class="fa fa-pencil"></i></button>
                                 <button class="btn btn-danger desactivarRegistroBeneficiario" codValor=' . $value["id"] . '><i class="fa fa-times"></i></button>
+                                <button class="btn btn-primary beneficiarioAtendido" CodValorAtendido=' . $value["id"] . '><i class="fa fa-print"></i></button>
                             </div>
                         </td>
                     </tr>';
@@ -238,6 +243,35 @@ class beneficiariosC
                 $activarBeneficiario = beneficiariosM::activarBeneficiarioM($codigo);
                 if ($activarBeneficiario == true) {
                     echo '<script>window.location="catbeneficiarioBaja"</script>';
+                } else {
+                    echo 'Error - Ocurrio un error al hora de insertar';
+                }
+            }
+        } catch (exception $ex) {
+            echo 'error ' . $ex->getMessage();
+        }
+    }
+
+    // Imprimir pagina y actualizar estado de activo a atendido al beneficiario.
+    public function beneficiarioAtendidoC()
+    {
+        try {
+            if (isset($_GET["CodValorAtendido"])) {
+
+                //OBTENER Y DAR FORMATO LA FECHA DE MANAGUA
+                $dtz = new DateTimeZone("America/Managua");
+                $dt = new DateTime("now", $dtz);
+                //Stores time as "2021-04-04T13:35:48":
+                $currentTime = $dt->format("Y-m-d") . "T" . $dt->format("H:i:s");
+
+                $codigo = $_GET["CodValorAtendido"];
+
+                $beneficiarioAtendidoParametros = array('id' => $codigo , 'fechaAtendido' => $currentTime );
+
+                $beneficiarioAtendido = beneficiariosM::beneficiarioAtendido($beneficiarioAtendidoParametros);
+                if (!empty($beneficiarioAtendido)) {
+                   reporteBeneficiario::reporteBeneficiarioC();
+
                 } else {
                     echo 'Error - Ocurrio un error al hora de insertar';
                 }

@@ -22,10 +22,8 @@
                             <h2>Rol</h2>
                             <select name="rolNuevo" id="rolNuevo" class="form-control input-lg">
                                 <?php
-
                                 use app\controlador\rolesC;
                                 use app\controlador\usuariosC;
-
                                 $listadeRoles = new rolesC;
                                 $listadeRoles->mostrarRolesUsuarioC();
                                 ?>

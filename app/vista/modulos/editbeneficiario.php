@@ -146,9 +146,7 @@
     </div>
 </div>
 <?php
-
 use app\controlador\beneficiariosC;
-
 $actualizarAyuda  = new beneficiariosC();
 $actualizarAyuda->actualizarDatosBeneficiario();
 ?>

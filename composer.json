@@ -8,12 +8,15 @@
             "app\\": "app/",
             "app\\controlador\\": "app/controlador/",
             "app\\modelo\\": "app/modelo/",
-            "app\\vista\\": "app/vista/"
+            "app\\vista\\": "app/vista/",
+            "app\\vendor": "vendor/"
         }
     },
     "authors": [{
         "name": "Allan Mendoza",
         "email": "allanmaleman@gmail.com"
     }],
-    "require": {}
+    "require": {
+        "dompdf/dompdf": "^1.2"
+    }
 }

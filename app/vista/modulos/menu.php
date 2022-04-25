@@ -1,7 +1,6 @@
 <aside class="main-sidebar">
     <!-- sidebar: style can be found in sidebar.less -->
     <section class="sidebar">
-
         <ul class="sidebar-menu" data-widget="tree">
             <li>
                 <a title="Inicio" href="inicio">
@@ -35,9 +34,8 @@
                                 <span>Usuarios</span>
                             </a>
                         </li>';
-            }
+                        }
             ?>
-
         </ul>
     </section>
     <!-- /.sidebar -->

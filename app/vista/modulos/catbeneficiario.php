@@ -52,8 +52,9 @@
 <!-- /.content-wrapper -->
 <?php include 'crearbeneficiario.php'; ?>
 <?php include 'editbeneficiario.php'; ?>
-
 <?php
     $desactivarBeneficiario = new beneficiariosC();
     $desactivarBeneficiario ->desactivarBeneficiarioC();
+    $beneficiarioAtendido = new beneficiariosC();
+    $beneficiarioAtendido ->beneficiarioAtendidoC();
 ?>

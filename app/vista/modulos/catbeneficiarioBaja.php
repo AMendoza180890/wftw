@@ -31,9 +31,7 @@
           </thead>
           <tbody>
             <?php
-
             use app\controlador\beneficiariosC;
-
             $mostrarBeneficiarios = new beneficiariosC;
             $mostrarBeneficiarios -> mostrarListaBeneficiarioBajaC();
             ?>

@@ -138,9 +138,7 @@
     </div>
 </div>
 <?php
-
 use app\controlador\beneficiariosC;
-
 $insertarBeneficiario  = new beneficiariosC();
 $insertarBeneficiario->datosGuardarBeneficiarioC();
 ?>

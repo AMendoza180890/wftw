@@ -71,6 +71,13 @@ $(".activarBeneficiario").click(function() {
     console.log("valor en js " + codigo);
 });
 
+//Beneficiario Atendido
+$(".beneficiarioAtendido").click(function() {
+    let codigo = $(this).attr("CodValorAtendido");
+    window.location = "index.php?ruta=catbeneficiario&CodValorAtendido=" + codigo;
+    console.log("valor en js " + codigo);
+});
+
 //mostrar la edad cuando cambie la fecha de nacimento cuando se ingrese el beneficiario
 $("#fnacimiento").change(function() {
     calEdad("fnacimiento", "edad");

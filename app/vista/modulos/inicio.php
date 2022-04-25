@@ -10,16 +10,13 @@
         <li class="active">Dashboard</li>
       </ol>
     </section>
-
     <!-- Main content -->
     <section class="content">
       <!-- Small boxes (Stat box) -->
         <?php
-
-          use app\controlador\homeC;
-
-           $recursos = new homeC();
-           $recursos -> dashboardUsuariosC();
+            use app\controlador\homeC;
+            $recursos = new homeC();
+            $recursos -> dashboardUsuariosC();
         ?>
         <!-- ./col -->
         <?php
@@ -65,11 +62,9 @@
               $recursosPorCategorias -> dashboardBeneficiarioPorEdadC();
           ?>
           <!-- /.box -->
-
         </section>
       </div>
       <!-- /.row (main row) -->
-
     </section>
     <!-- /.content -->
   </div>

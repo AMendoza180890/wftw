@@ -36,7 +36,7 @@ class beneficiariosM extends conexionBD
     public static function mostrarListaBeneficiarioAtendidosM()
     {
         try {
-            $pdo = conexionBD::conexion()->prepare("SELECT id, nombreApellido, fnacimiento, direccion, celular, telefono, referencia, diagnostico, foto, nombreTutor, cedula, parentesco, fechaBaja FROM catbeneficiario WHERE fechaAtendidos IS NOT NULL  ORDER BY fechaAtendidos ASC");
+            $pdo = conexionBD::conexion()->prepare("SELECT id, nombreApellido, fnacimiento, direccion, celular, telefono, referencia, diagnostico, foto, nombreTutor, cedula, parentesco, fechaBaja,fechaAtendidos FROM catbeneficiario WHERE fechaAtendidos IS NOT NULL  ORDER BY fechaAtendidos ASC");
             $pdo->execute();
             return $pdo->fetchAll();
         } catch (Exception $ex) {
@@ -168,6 +168,27 @@ class beneficiariosM extends conexionBD
 
         } catch (exception $ex) {
             echo 'error ' . $ex->getMessage();
+        }
+    }
+
+    public static function beneficiarioAtendido($datosBeneficiarioAtendido){
+        try {
+            $pdo = conexionBD::conexion()->prepare("UPDATE catbeneficiario SET 
+            fechaAtendidos = :fechaAtencion
+            WHERE id=:id");
+
+            $pdo->bindparam(":id", $datosBeneficiarioAtendido["id"], PDO::PARAM_INT);
+            $pdo->bindparam(":fechaAtencion", $datosBeneficiarioAtendido["fechaAtendido"], PDO::PARAM_INT);
+
+            if($pdo->execute()) {
+                $obtenerDatosBeneficiarioAtendido = beneficiariosM::obtenerDatosBeneficiarioM($datosBeneficiarioAtendido["id"]);
+                return $obtenerDatosBeneficiarioAtendido;
+            } else {
+                return false;
+            }
+
+        } catch (exception $ex) {
+            echo 'error '. $ex->getMessage();
         }
     }
 }
