@@ -9,6 +9,7 @@
         'catbeneficiarioAtendido' => 'catbeneficiarioAtendido',
         'showbeneficiarioInfo' => 'showbeneficiarioInfo',        
         'editbeneficiario' => 'editbeneficiario',
-        'crearbeneficiario' => 'crearbeneficiario'
+        'crearbeneficiario' => 'crearbeneficiario',
+        'reporteBeneficiario'=> 'reporteBeneficiario'
     ]
 ?>

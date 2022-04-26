@@ -5,8 +5,8 @@ use app\controlador\tratamientoRecursos;
 use DateTime;
 use DateTimeZone;
 use Exception;
-use FPDF;
-require_once ('fpdf/fpdf.php');
+// use FPDF;
+// require_once ('fpdf/fpdf.php');
 //require_once '../librerias/dompdf/autoload.inc.php';
 //use Dompdf\Dompdf;
 class beneficiariosC
@@ -265,12 +265,7 @@ class beneficiariosC
                 $beneficiarioAtendidoParametros = array('id' => $codigo , 'fechaAtendido' => $currentTime );
                 $beneficiarioAtendido = beneficiariosM::beneficiarioAtendido($beneficiarioAtendidoParametros);
                 if (!empty($beneficiarioAtendido)) {
-                    $pdf = new FPDF();
-                    $pdf->AddPage();
-                    $pdf->SetFont('Arial','B',16);
-                    $pdf->Cell(40,10,'Hello World!');
-                    $pdf->Output('D','doc.pdf');
-                   //reporteBeneficiario::reporteBeneficiarioC();
+                    echo '<script>window.location="?ruta=reporteBeneficiario&codigo"+'.$codigo.'</script>';
                 } else {
                     echo 'Error - Ocurrio un error al hora de insertar';
                 }
