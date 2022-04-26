@@ -265,7 +265,7 @@ class beneficiariosC
                 $codigo = $_GET["CodValorAtendido"];
                 $beneficiarioAtendidoParametros = array('id' => $codigo , 'fechaAtendido' => $currentTime );
                 $beneficiarioAtendido = beneficiariosM::beneficiarioAtendido($beneficiarioAtendidoParametros);
-                if (!empty($beneficiarioAtendido)) {
+                if ($beneficiarioAtendido == true) {
                     echo '<script>window.location="app/controlador/reporteBeneficiario.php?codValor='.$codigo.'"</script>';
                 } else {
                     echo 'Error - Ocurrio un error al hora de insertar';

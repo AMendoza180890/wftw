@@ -28,10 +28,15 @@
 ?>
 
      <body>
-         <h1>Titulo del documento a imprimir</h1>
-         <p>parrafo del contenido</p>
+         <h1 style="text-align:center; color:blue;">Titulo del documento a imprimir</h1>
+         <p style="text-align:center; color:red;">parrafo del contenido</p>
          <p><?php echo 'id: '. $codigo?></p>
          <p><?php echo 'nombre: '. $infoBeneficiario["nombreApellido"] ?></p>
+         <p><?php echo 'Fecha de Nacimiento: '. $infoBeneficiario["fnacimiento"] ?></p>
+         <p><?php echo 'direccion: '. $infoBeneficiario["direccion"] ?></p>
+         <p><?php echo 'celular: '. $infoBeneficiario["celular"] ?></p>
+         <p><?php echo 'referencia: '. $infoBeneficiario["referencia"] ?></p>
+         <p><?php echo 'tipo de Medio: '. $infoBeneficiario["tipoMedio"] ?></p>
      </body>
 
  </html>';
@@ -52,9 +57,10 @@
         // // Render the HTML as PDF
         $dompdf->render();
         // // Output the generated PDF to Browser
-        $dompdf->stream($codigo . ".pdf", array("Attachment"=>true));
-        //retornar a la pagina actual de beneficiarios Actuales.
-        echo '<script>window.location="catbeneficiario"</script>';
+        if ($dompdf->stream($codigo . ".pdf", array("Attachment"=>true))){
+            //retornar a la pagina actual de beneficiarios Actuales.
+            echo '<script>window.location="wftw/catbeneficiario"</script>';
+        }
         //FPDF
         //    $pdf = new FPDF();
         //    $pdf->AddPage();

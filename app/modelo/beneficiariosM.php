@@ -181,8 +181,9 @@ class beneficiariosM extends conexionBD
             $pdo->bindparam(":fechaAtencion", $datosBeneficiarioAtendido["fechaAtendido"], PDO::PARAM_STR);
 
             if($pdo->execute()) {
-                $obtenerDatosBeneficiarioAtendido = beneficiariosM::obtenerDatosBeneficiarioM($datosBeneficiarioAtendido["id"]);
-                return $obtenerDatosBeneficiarioAtendido;
+                //$obtenerDatosBeneficiarioAtendido = beneficiariosM::obtenerDatosBeneficiarioM($datosBeneficiarioAtendido["id"]);
+                //return $obtenerDatosBeneficiarioAtendido;
+                return true;
             } else {
                 return false;
             }
