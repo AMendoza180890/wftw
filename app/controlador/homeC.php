@@ -1,9 +1,7 @@
 <?php
 namespace app\controlador;
-
 use app\modelo\homeM;
 use Exception;
-
 class homeC{
     public function dashboardBeneficiarioRegistradoC(){
         try {
@@ -51,7 +49,6 @@ class homeC{
     public function dashboardUsuariosC(){
         try {
             $totalUsuarios = homeM::dashboardUsuariosM();
-
             if ($totalUsuarios != 0 || !empty($totalUsuarios)) {
                 echo '<div class="col-lg-3 col-xs-6">
                     <!-- small box -->

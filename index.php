@@ -1,7 +1,6 @@
 <?php
 use app\controlador\plantillaC as VistaPlantillaAdminLteC;
 require __DIR__ . '/vendor/autoload.php';
-
 // include_once 'app/controlador/plantillaC.php';
 // include_once 'app/controlador/usuariosC.php';
 // include_once 'app/controlador/rolesC.php';
@@ -16,7 +15,6 @@ require __DIR__ . '/vendor/autoload.php';
 // include_once 'app/modelo/homeM.php';
 // // include_once 'modelo/tituloM.php';
 // include_once 'app/modelo/mensajeM.php';
-
 $plantilla = new VistaPlantillaAdminLteC;
 $plantilla -> llamarPlantillaAdminLte();
 ?>

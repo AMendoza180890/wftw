@@ -42,11 +42,11 @@
                     <button type="submit" class="btn btn-success">Guardar Cambios</button>
                     <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
                 </div>
-                <?php
-                    use app\controlador\usuariosC;
-                    $actualizarUsuario  = new usuariosC();
-                    $actualizarUsuario -> actualizarRegistroUsuarioC();
-                ?>
+<?php
+use app\controlador\usuariosC;
+$actualizarUsuario  = new usuariosC();
+$actualizarUsuario -> actualizarRegistroUsuarioC();
+?>
             </form>
         </div>
     </div>

@@ -13,26 +13,26 @@
     <!-- Main content -->
     <section class="content">
       <!-- Small boxes (Stat box) -->
-        <?php
-            use app\controlador\homeC;
-            $recursos = new homeC();
-            $recursos -> dashboardUsuariosC();
-        ?>
+<?php
+use app\controlador\homeC;
+$recursos = new homeC();
+$recursos -> dashboardUsuariosC();
+?>
         <!-- ./col -->
-        <?php
-          // $cantidadUsuarios = new dashboardHomeC();
-          // $cantidadUsuarios -> dashboardUsuariosC();
-          ?>
+<?php
+// $cantidadUsuarios = new dashboardHomeC();
+// $cantidadUsuarios -> dashboardUsuariosC();
+?>
         <!-- ./col -->
-        <?php
-          // $cantidadUsuariosAdministradores = new dashboardHomeC();
-          // $cantidadUsuariosAdministradores -> dashboardUsuariosAdministradoresC();
-        ?>
+<?php
+// $cantidadUsuariosAdministradores = new dashboardHomeC();
+// $cantidadUsuariosAdministradores -> dashboardUsuariosAdministradoresC();
+?>
         <!-- ./col -->
-        <?php
-        // $cantidadUsuariosInvitados = new dashboardHomeC();
-        // $cantidadUsuariosInvitados -> dashboardUsuariosInvitadosC();
-        ?>
+<?php
+// $cantidadUsuariosInvitados = new dashboardHomeC();
+// $cantidadUsuariosInvitados -> dashboardUsuariosInvitadosC();
+?>
         <!-- ./col -->
       </div>
       <!-- /.row -->
@@ -46,10 +46,10 @@
         <!-- right col (We are only adding the ID to make the widgets sortable)-->
         <section class="col-lg-5 connectedSortable">
           <!-- Calendar -->
-          <?php
-              // $recursosPorCategorias = new homeC();
-              // $recursosPorCategorias -> dashboardCantidadPorDiscapacidadC();
-          ?>
+<?php
+// $recursosPorCategorias = new homeC();
+// $recursosPorCategorias -> dashboardCantidadPorDiscapacidadC();
+?>
           <!-- /.box -->
 
         </section>
@@ -57,10 +57,10 @@
 
         <section class="col-lg-5 connectedSortable">
           <!-- Calendar -->
-          <?php
-              // $recursosPorCategorias = new homeC();
-              // $recursosPorCategorias -> dashboardBeneficiarioPorEdadC();
-          ?>
+<?php
+// $recursosPorCategorias = new homeC();
+// $recursosPorCategorias -> dashboardBeneficiarioPorEdadC();
+?>
           <!-- /.box -->
         </section>
       </div>

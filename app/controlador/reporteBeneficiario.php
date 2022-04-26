@@ -1,11 +1,13 @@
 <?php
 namespace app\controlador;
+
 use FPDF;
+
 require_once ('fpdf/fpdf.php');
 //DOMPDF
 // require_once 'dompdf/autoload.inc.php';
 // use Dompdf\Dompdf;
-class reporteBeneficiario{
+class reporteBeneficiario extends FPDF{
     public static function reporteBeneficiarioC(){
         // ob_clean();
         // echo '<!DOCTYPE html>

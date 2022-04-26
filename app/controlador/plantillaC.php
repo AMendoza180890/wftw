@@ -1,6 +1,6 @@
 <?php
 namespace app\controlador;
-require_once '../wftw/vendor/autoload.php';
+//require_once '../wftw/vendor/autoload.php';
 use Exception;
 
 class plantillaC{

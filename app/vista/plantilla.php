@@ -1,7 +1,6 @@
 <?php if(!headers_sent()){
-  session_start();
-}
-?>
+session_start();
+}?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -45,26 +44,26 @@
 </head>
 <body class="hold-transition skin-blue sidebar-mini login-page">
 <?php  
-  if (isset($_SESSION["ingreso"]) && $_SESSION["ingreso"] == true) {
-    echo '<div class="wrapper">';
-    include 'modulos/cabecera.php';
-    include 'modulos/menu.php';
-    include 'modulos/rutasAdmin.php';
-      //global $rutasAdmin;
-    if (isset($_GET["ruta"])) {
-      if ($rutasAdmin[$_GET["ruta"]]) {
-        include "modulos/".$_GET["ruta"].".php";
-      }else {
-        include "modulos/inicio.php";
-      }
-      echo '</div>';
-    }else{
-        include "modulos/login.php";
+if (isset($_SESSION["ingreso"]) && $_SESSION["ingreso"] == true) {
+echo '<div class="wrapper">';
+include 'modulos/cabecera.php';
+include 'modulos/menu.php';
+include 'modulos/rutasAdmin.php';
+  //global $rutasAdmin;
+  if (isset($_GET["ruta"])) {
+    if ($rutasAdmin[$_GET["ruta"]]) {
+      include "modulos/".$_GET["ruta"].".php";
+    }else {
+      include "modulos/inicio.php";
     }
+    echo '</div>';
   }else{
     include "modulos/login.php";
+  }
+}else{
+  include "modulos/login.php";
 }
-  ?>
+?>
 <!-- ./wrapper -->
 <!-- jQuery 3 -->
 <script src="app/vista/bower_components/jquery/dist/jquery.min.js"></script>

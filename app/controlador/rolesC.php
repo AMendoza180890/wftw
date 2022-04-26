@@ -1,10 +1,7 @@
 <?php
-
 namespace app\controlador;
-
 use app\modelo\rolesM;
 use Exception;
-
 class rolesC{
     public function mostrarRolesUsuarioC(){
         try {
@@ -15,12 +12,10 @@ class rolesC{
                     echo '<option value="'.$value["rolid"].'">'.$value["catRolesDescripcion"].'</option>';
                 }
             }
-
         } catch (Exception $ex) {
             echo "Error -".$ex;
         }
     }
-
     // public static function setRolesUsuarioC($idUsuario){
     //     try {
     //         if ($idUsuario != null) {

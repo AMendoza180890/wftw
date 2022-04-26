@@ -47,4 +47,4 @@
   <!-- /.content -->
 </div>
 <!-- /.content-wrapper -->
-<?php include 'showbeneficiarioInfo.php'; ?>
+<?php include 'showbeneficiarioInfo.php';?>

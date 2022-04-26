@@ -5,7 +5,6 @@
   <!-- /.login-logo -->
   <div class="login-box-body">
     <p class="login-box-msg">Iniciar Sesión</p>
-
     <form action="" method="post">
       <div class="form-group has-feedback">
         <input type="username" class="form-control" name="usuarioIngreso" placeholder="Usuario">
@@ -29,7 +28,6 @@
         $ingreso -> ingresoUsuariosC();
       ?>
     </form>
-
   </div>
   <!-- /.login-box-body -->
 </div>

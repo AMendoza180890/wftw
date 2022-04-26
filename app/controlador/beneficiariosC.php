@@ -5,14 +5,10 @@ use app\controlador\tratamientoRecursos;
 use DateTime;
 use DateTimeZone;
 use Exception;
-
 use FPDF;
 require_once ('fpdf/fpdf.php');
-
-
 //require_once '../librerias/dompdf/autoload.inc.php';
 //use Dompdf\Dompdf;
-
 class beneficiariosC
 {
     // mostrar en lista del beneficiario activos.
@@ -260,26 +256,21 @@ class beneficiariosC
     {
         try {
             if (isset($_GET["CodValorAtendido"])) {
-
                 //OBTENER Y DAR FORMATO LA FECHA DE MANAGUA
                 $dtz = new DateTimeZone("America/Managua");
                 $dt = new DateTime("now", $dtz);
                 //Stores time as "2021-04-04T13:35:48":
                 $currentTime = $dt->format("Y-m-d") . "T" . $dt->format("H:i:s");
-
                 $codigo = $_GET["CodValorAtendido"];
-
                 $beneficiarioAtendidoParametros = array('id' => $codigo , 'fechaAtendido' => $currentTime );
-
                 $beneficiarioAtendido = beneficiariosM::beneficiarioAtendido($beneficiarioAtendidoParametros);
                 if (!empty($beneficiarioAtendido)) {
                     $pdf = new FPDF();
                     $pdf->AddPage();
                     $pdf->SetFont('Arial','B',16);
                     $pdf->Cell(40,10,'Hello World!');
-                    $pdf->Output();
+                    $pdf->Output('D','doc.pdf');
                    //reporteBeneficiario::reporteBeneficiarioC();
-
                 } else {
                     echo 'Error - Ocurrio un error al hora de insertar';
                 }
@@ -289,3 +280,4 @@ class beneficiariosC
         }
     }
 }
+?>

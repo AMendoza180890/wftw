@@ -1,8 +1,6 @@
 <?php
-
 namespace app\controlador;
 use Exception;
-
 class tratamientoRecursos {
     public static function tratamientoTipoImagenBeneficiario($nombreElemento, $elemento)
     {

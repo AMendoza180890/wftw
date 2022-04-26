@@ -46,6 +46,6 @@
 </div>
 <!-- /.content-wrapper -->
 <?php
-    $activarBeneficiario = new beneficiariosC();
-    $activarBeneficiario -> activarBeneficiarioC();
+$activarBeneficiario = new beneficiariosC();
+$activarBeneficiario -> activarBeneficiarioC();
 ?>

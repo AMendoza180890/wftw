@@ -127,7 +127,6 @@
                             <option value="hermano">hermano</option>
                         </select>
                     </div>
-
                 </div>
                 <div class="modal-footer">
                     <button type="submit" class="btn btn-primary">Guardar</button>

@@ -1,11 +1,8 @@
 <?php
-
 namespace app\controlador;
 use app\modelo\usuariosM;
 use Exception;
-
 class usuariosC {
-
     public function ingresoUsuariosC(){
         try {
             if(isset($_POST["usuarioIngreso"])){
@@ -23,7 +20,6 @@ class usuariosC {
                             $_SESSION["clave"] = $inicioSesion["clave"];
                             $_SESSION["foto"] = $inicioSesion["foto"];
                             $_SESSION["rol"] = $inicioSesion["catRolesDescripcion"];
-    
                             echo '<script>window.location = "inicio";</script>';
                         }
                     } else {
@@ -67,17 +63,17 @@ class usuariosC {
 
     public function registrarUsuariosC(){
         try {
-                if(isset($_POST["usuarioNuevo"])){
-                    // codigo de validacion de imagen
-                    $rutaImagenProcesada = tratamientoImagen::tratamientoTipoImagen($_FILES["fotoNuevo"]["tmp_name"], $_FILES["fotoNuevo"]);
-                    $datosNuevoUsuario = array("usuario"=>$_POST["usuarioNuevo"],"clave"=>$_POST["claveNuevo"],"rol"=>$_POST["rolNuevo"],"foto"=>$rutaImagenProcesada);                  
-                    $crearNuevoUsuario = usuariosM::registrarUsuariosM($datosNuevoUsuario);
-                    if ($crearNuevoUsuario == true) {
-                            echo '<script>window.location="catusuarios"</script>';
-                    }else{
-                            echo 'Error - Ocurrio un error al hora de insertar';
-                    }
+            if(isset($_POST["usuarioNuevo"])){
+                // codigo de validacion de imagen
+                $rutaImagenProcesada = tratamientoImagen::tratamientoTipoImagen($_FILES["fotoNuevo"]["tmp_name"], $_FILES["fotoNuevo"]);
+                $datosNuevoUsuario = array("usuario"=>$_POST["usuarioNuevo"],"clave"=>$_POST["claveNuevo"],"rol"=>$_POST["rolNuevo"],"foto"=>$rutaImagenProcesada);                  
+                $crearNuevoUsuario = usuariosM::registrarUsuariosM($datosNuevoUsuario);
+                if ($crearNuevoUsuario == true) {
+                    echo '<script>window.location="catusuarios"</script>';
+                }else{
+                    echo 'Error - Ocurrio un error al hora de insertar';
                 }
+            }
         } catch (Exception $ex) {
             echo 'Error - '.$ex;
         }
@@ -95,16 +91,12 @@ class usuariosC {
     public function actualizarRegistroUsuarioC(){
         try {
             if (isset($_POST["idEdit"])) {
-                $rutaImagen = $_POST["fotoActual"];
-                
+                $rutaImagen = $_POST["fotoActual"];    
                 if ($_FILES["fotoEdit"]["tmp_name"] != "") {
                     $rutaImagen = tratamientoImagen::tratamientoTipoImagen($_FILES["fotoEdit"]["tmp_name"], $_FILES["fotoEdit"]);
                 }
-                
                 $datosActualizarUsuario = array("id"=>$_POST["idEdit"],"usuario"=>$_POST["usuarioEdit"],"clave"=>$_POST["claveEdit"],"rol"=>$_POST["rolEdit"],"foto"=>$rutaImagen);
-
                 $datosActualizados = usuariosM::actualizarRegistroUsuarioM($datosActualizarUsuario);
-
                 if($datosActualizados == true){
                     echo '<script>window.location = "catusuarios"</script>';
                 }else{

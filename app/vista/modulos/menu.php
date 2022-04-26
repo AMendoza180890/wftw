@@ -1,5 +1,4 @@
 <aside class="main-sidebar">
-    <!-- sidebar: style can be found in sidebar.less -->
     <section class="sidebar">
         <ul class="sidebar-menu" data-widget="tree">
             <li>
@@ -28,8 +27,8 @@
             </li>
             <li>
                 <a title="Administracion de los Usuarios" href="catusuarios">
-                <i class="fa fa-user"></i>
-                <span>Usuarios</span>
+                    <i class="fa fa-user"></i>
+                    <span>Usuarios</span>
                 </a>
             </li>
         </ul>

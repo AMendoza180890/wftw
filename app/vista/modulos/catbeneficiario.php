@@ -31,12 +31,9 @@
           </thead>
           <tbody>
             <?php
-
             use app\controlador\beneficiariosC;
-
             $mostrarBeneficiarios = new beneficiariosC;
             $mostrarBeneficiarios -> mostrarListaBeneficiarioC();
-
             $valor = null;
             $editarUsuario = beneficiariosC::obtenerDatosBeneficiarioC($valor);
             ?>
@@ -50,11 +47,11 @@
   <!-- /.content -->
 </div>
 <!-- /.content-wrapper -->
-<?php include 'crearbeneficiario.php'; ?>
-<?php include 'editbeneficiario.php'; ?>
+<?php include 'crearbeneficiario.php';?>
+<?php include 'editbeneficiario.php';?>
 <?php
-    $desactivarBeneficiario = new beneficiariosC();
-    $desactivarBeneficiario ->desactivarBeneficiarioC();
-    $beneficiarioAtendido = new beneficiariosC();
-    $beneficiarioAtendido ->beneficiarioAtendidoC();
+  $desactivarBeneficiario = new beneficiariosC();
+  $desactivarBeneficiario ->desactivarBeneficiarioC();
+  $beneficiarioAtendido = new beneficiariosC();
+  $beneficiarioAtendido ->beneficiarioAtendidoC();
 ?>

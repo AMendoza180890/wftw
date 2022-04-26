@@ -41,10 +41,10 @@
                     <button type="submit" class="btn btn-primary">Crear</button>
                     <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
                 </div>
-                <?php
-                    $crearUsuario = new usuariosC();
-                    $crearUsuario -> registrarUsuariosC();
-                ?>
+<?php
+$crearUsuario = new usuariosC();
+$crearUsuario -> registrarUsuariosC();
+?>
             </form>
         </div>
     </div>
