@@ -1,9 +1,7 @@
 // funcion para obtener registros por ajax
 $(".TablaUsuario").on("click", ".EditRegistroUsuario", function() {
     let codValor = $(this).attr("codValor");
-
     let datos = new FormData();
-
     datos.append("id", codValor);
 
     $.ajax({
@@ -35,5 +33,4 @@ $(".TablaUsuario").on("click", ".EditRegistroUsuario", function() {
 $(".TablaUsuario").on("click", ".DesactivarRegistroUsuario", function() {
     let codValor = $(this).attr("codValor");
     window.location = "index.php?ruta=catusuarios&CodValor=" + codValor;
-    console.log("valor en js " + codValor);
 })

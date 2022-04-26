@@ -14,7 +14,6 @@ $(".editarRegistroBeneficiario").click(function() {
         dataType: "json",
         success: function(response) {
             //input text
-            console.log(response);
             $("#idedit").val(response["id"]);
             $("#nombreApelidoEdit").val(response["nombreApellido"]);
             $("#fnacimientoEdit").val(response["fnacimiento"]);
@@ -48,7 +47,6 @@ $(".editarRegistroBeneficiario").click(function() {
             } else {
                 $(".visor").attr("src", "app/vista/img/beneficiario/defecto.png");
             }
-
             calEdad("fnacimientoEdit", "edadEdit");
         },
         error: function(request) {
@@ -61,21 +59,18 @@ $(".editarRegistroBeneficiario").click(function() {
 $(".desactivarRegistroBeneficiario").click(function() {
     let codigo = $(this).attr("codValor");
     window.location = "index.php?ruta=catbeneficiario&CodValor=" + codigo;
-    console.log("valor en js " + codigo);
 });
 
 //dar de alta al beneficiario
 $(".activarBeneficiario").click(function() {
     let codigo = $(this).attr("codValor");
     window.location = "index.php?ruta=catbeneficiarioBaja&CodValor=" + codigo;
-    console.log("valor en js " + codigo);
 });
 
 //Beneficiario Atendido
 $(".beneficiarioAtendido").click(function() {
     let codigo = $(this).attr("CodValorAtendido");
     window.location = "index.php?ruta=catbeneficiario&CodValorAtendido=" + codigo;
-    console.log("valor en js " + codigo);
 });
 
 //mostrar la edad cuando cambie la fecha de nacimento cuando se ingrese el beneficiario
