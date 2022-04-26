@@ -1,13 +1,10 @@
-<?php
-ob_start();
-?>
 <!DOCTYPE html>
 <html lang="en">
  <head>
      <meta charset="UTF-8">
      <meta http-equiv="X-UA-Compatible" content="IE=edge">
      <meta name="viewport" content="width=device-width, initial-scale=1.0">
-     <title>Document</title>
+     <title>Reporte de Beneficiario</title>
  </head>
  <?php
     include '../modelo/envConexion.php';
@@ -33,8 +30,8 @@ ob_start();
      <body>
          <h1>Titulo del documento a imprimir</h1>
          <p>parrafo del contenido</p>
-         <p>id:<?php //$infoBeneficiario["id"] ?></p>
-         <p>nombre:<?php //$infoBeneficiario["nombreApellido"] ?></p>
+         <p><?php echo 'id: '. $codigo?></p>
+         <p><?php echo 'nombre: '. $infoBeneficiario["nombreApellido"] ?></p>
      </body>
 
  </html>';
@@ -55,7 +52,9 @@ ob_start();
         // // Render the HTML as PDF
         $dompdf->render();
         // // Output the generated PDF to Browser
-        $dompdf->stream($datosBeneficiario["nombreApellido"] . ".pdf", array("Attachment"=>false));
+        $dompdf->stream($codigo . ".pdf", array("Attachment"=>true));
+        //retornar a la pagina actual de beneficiarios Actuales.
+        echo '<script>window.location="catbeneficiario"</script>';
         //FPDF
         //    $pdf = new FPDF();
         //    $pdf->AddPage();
