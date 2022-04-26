@@ -12,7 +12,6 @@ use Exception;
 //use Dompdf\Dompdf;
 class beneficiariosC
 {
-    public $cod;
     // mostrar en lista del beneficiario activos.
     public function mostrarListaBeneficiarioC()
     {
@@ -267,8 +266,7 @@ class beneficiariosC
                 $beneficiarioAtendidoParametros = array('id' => $codigo , 'fechaAtendido' => $currentTime );
                 $beneficiarioAtendido = beneficiariosM::beneficiarioAtendido($beneficiarioAtendidoParametros);
                 if (!empty($beneficiarioAtendido)) {
-                    $this -> cod = $codigo;
-                    echo '<script>window.location="app/controlador/reporteBeneficiario.php"</script>';
+                    echo '<script>window.location="app/controlador/reporteBeneficiario.php?codValor='.$codigo.'"</script>';
                 } else {
                     echo 'Error - Ocurrio un error al hora de insertar';
                 }

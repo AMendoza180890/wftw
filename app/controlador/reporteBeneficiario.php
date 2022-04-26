@@ -1,7 +1,4 @@
 <?php
-if (!headers_sent()) {
-session_start();
-}
 ob_start();
 ?>
 <!DOCTYPE html>
@@ -17,24 +14,27 @@ ob_start();
     include '../modelo/conexionBD.php';
     include '../modelo/beneficiariosM.php';
     include 'beneficiariosC.php';
-    use app\controlador\beneficiariosC;
+    use app\modelo\conexionBD;
+
     //require_once ('fpdf/fpdf.php');
     //DOMPDF
     // class reporteBeneficiario extends FPDF{
     //     public static function reporteBeneficiarioC(){
-    $beneficiario = new beneficiariosC();
-    $codValor = 1;
-    if (!empty($codValor)) {
-        $codigo = $codValor;
-        $datosBeneficiario = $beneficiario::obtenerDatosBeneficiarioC($codigo);
+    if (isset($_GET["codValor"])) {
+        $codigo = $_GET["codValor"];
+
+        $pdo = conexionBD::conexion()->prepare("SELECT id, nombreApellido, fnacimiento, direccion, celular, telefono, referencia, tipoMedio, estadoMedio, apoyoMedio, diagnostico, foto, nombreTutor, cedula, parentesco, fechaCreacion, fechaBaja, fechaAtendidos FROM catbeneficiario WHERE id = :id");
+        $pdo->bindParam(":id", $codigo, PDO::PARAM_INT);
+        $pdo->execute();
+        $infoBeneficiario = $pdo->fetch();
     }
 ?>
 
      <body>
          <h1>Titulo del documento a imprimir</h1>
          <p>parrafo del contenido</p>
-         <p>id:<?php $datosBeneficiario["id"] ?></p>
-         <p>nombre:<?php $datosBeneficiario["nombreApellido"] ?></p>
+         <p>id:<?php //$infoBeneficiario["id"] ?></p>
+         <p>nombre:<?php //$infoBeneficiario["nombreApellido"] ?></p>
      </body>
 
  </html>';
@@ -42,8 +42,8 @@ ob_start();
         $html = ob_get_clean();
         //DOMPDF
         // instantiate and use the dompdf class
-        use Dompdf\Dompdf;
         require_once 'dompdf/autoload.inc.php';
+        use Dompdf\Dompdf;
         $dompdf = new Dompdf();
 
         $options = $dompdf->getOptions();
