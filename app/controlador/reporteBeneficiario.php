@@ -57,10 +57,7 @@
         // // Render the HTML as PDF
         $dompdf->render();
         // // Output the generated PDF to Browser
-        if ($dompdf->stream($codigo . ".pdf", array("Attachment"=>true))){
-            //retornar a la pagina actual de beneficiarios Actuales.
-            echo '<script>window.location="wftw/catbeneficiario"</script>';
-        }
+        $dompdf->stream($infoBeneficiario["nombreApellido"] . ".pdf", array("Attachment"=>true));
         //FPDF
         //    $pdf = new FPDF();
         //    $pdf->AddPage();
