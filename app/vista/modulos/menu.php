@@ -33,5 +33,4 @@
             </li>
         </ul>
     </section>
-    <!-- /.sidebar -->
 </aside>

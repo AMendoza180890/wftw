@@ -21,13 +21,12 @@
         </div>
         <!-- /.col -->
       </div>
-      <?php
-        //include_once '../../vendor/autoload.php';
-        use app\controlador\usuariosC;
-        $ingreso = new usuariosC;
-        $ingreso -> ingresoUsuariosC();
-      ?>
+<?php
+//include_once '../../vendor/autoload.php';
+use app\controlador\usuariosC;
+$ingreso = new usuariosC;
+$ingreso -> ingresoUsuariosC();
+?>
     </form>
   </div>
-  <!-- /.login-box-body -->
 </div>

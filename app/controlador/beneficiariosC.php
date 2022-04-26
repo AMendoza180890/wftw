@@ -5,12 +5,14 @@ use app\controlador\tratamientoRecursos;
 use DateTime;
 use DateTimeZone;
 use Exception;
+
 // use FPDF;
 // require_once ('fpdf/fpdf.php');
 //require_once '../librerias/dompdf/autoload.inc.php';
 //use Dompdf\Dompdf;
 class beneficiariosC
 {
+    public $cod;
     // mostrar en lista del beneficiario activos.
     public function mostrarListaBeneficiarioC()
     {
@@ -265,7 +267,8 @@ class beneficiariosC
                 $beneficiarioAtendidoParametros = array('id' => $codigo , 'fechaAtendido' => $currentTime );
                 $beneficiarioAtendido = beneficiariosM::beneficiarioAtendido($beneficiarioAtendidoParametros);
                 if (!empty($beneficiarioAtendido)) {
-                    echo '<script>window.location="?ruta=reporteBeneficiario&codigo"+'.$codigo.'</script>';
+                    $this -> cod = $codigo;
+                    echo '<script>window.location="app/controlador/reporteBeneficiario.php"</script>';
                 } else {
                     echo 'Error - Ocurrio un error al hora de insertar';
                 }
