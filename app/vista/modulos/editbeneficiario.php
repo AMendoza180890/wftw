@@ -24,7 +24,7 @@
 
                         <div class="form-group">
                             <h2>Edad</h2>
-                            <input type="text" class="form-control input-lg" name="edadEdit" id="edadEdit" required>
+                            <input type="text" class="form-control input-lg" name="edadEdit" id="edadEdit" disabled>
                         </div>
 
                         <div class="form-group">
@@ -81,8 +81,8 @@
                             <!-- <input type="text" class="form-control input-lg" name="direccion" id="direccion" required> -->
                             <select class="form-control input-lg" name="diagnosticoEdit" id="diagnosticoEdit">
                                 <option id="diagValor"></option>
-                                <option value="diagnostico1">diagnostico1</option>
-                                <option value="diagnostico2">diagnostico2</option>
+                                <option value="Sindrome Down">Sindrome Down</option>
+                                <option value="Paralisis Cerebral">Paralisis Cerebral</option>
                                 <option value="diagnostico3">diagnostico3</option>
                             </select>
                         </div>
@@ -125,7 +125,7 @@
                     <div class="form-group">
                         <h2>Parentesco:</h2>
                         <!-- <input type="text" class="form-control input-lg" name="direccion" id="direccion" required> -->
-                        <select class="form-control input-lg" name="tutorparentescoEdit" id="tutorparentescoEdit">
+                        <select class="form-control input-lg" name="tutorparentescoEdit" id="tutorparentescoEdit" required>
                             <option id="tutorValor"></option>
                             <option value="padre">padre</option>
                             <option value="madre">madre</option>
@@ -135,12 +135,20 @@
                         </select>
                     </div>
 
+                    <div class="form-group">
+                        <h2>Institucion:</h2>
+                        <!-- <input type="text" class="form-control input-lg" name="direccion" id="direccion" required> -->
+                        <select class="form-control input-lg" name="institucionEdit" id="institucionEdit" required>
+                            <option id="institucionValor"></option>
+                            <option value="Tesoros de Dios">Tesoros de Dios</option>
+                            <option value="Asambleas de Dios">Asambleas de Dios</option>
+                        </select>
+                    </div>
                 </div>
                 <div class="modal-footer">
                     <button type="submit" class="btn btn-primary">Actualizar</button>
                     <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
                 </div>
-
             </form>
         </div>
     </div>

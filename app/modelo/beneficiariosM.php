@@ -48,8 +48,8 @@ class beneficiariosM extends conexionBD
     public static function datosGuardarBeneficiarioM($datoBeneficiario)
     {
         try {
-            $pdo = conexionBD::conexion()->prepare("INSERT INTO catbeneficiario(nombreApellido, fnacimiento, direccion, celular, telefono, referencia, tipoMedio, estadoMedio, apoyoMedio, diagnostico, foto, nombreTutor, cedula, parentesco, fechaCreacion) 
-            VALUES (:nombreApellido, :fnacimiento, :direccion, :celular, :telefono, :referencia, :tipoMedio,:estadoMedio,:apoyoMedio, :diagnostico, :foto, :nombreTutor, :cedula, :parentesco, :fcreacion)");
+            $pdo = conexionBD::conexion()->prepare("INSERT INTO catbeneficiario(nombreApellido, fnacimiento, direccion, celular, telefono, referencia, tipoMedio, estadoMedio, apoyoMedio, diagnostico, foto, nombreTutor, cedula, parentesco, institucion, fechaCreacion) 
+            VALUES (:nombreApellido, :fnacimiento, :direccion, :celular, :telefono, :referencia, :tipoMedio,:estadoMedio,:apoyoMedio, :diagnostico, :foto, :nombreTutor, :cedula, :parentesco, :institucion, :fcreacion)");
 
             $pdo->bindParam(":nombreApellido", $datoBeneficiario["nombreApellido"], PDO::PARAM_STR);
             $pdo->bindParam(":fnacimiento", $datoBeneficiario["fnacimiento"], PDO::PARAM_STR);
@@ -68,6 +68,7 @@ class beneficiariosM extends conexionBD
             $pdo->bindParam(":cedula", $datoBeneficiario["cedula"], PDO::PARAM_STR);
             $pdo->bindParam(":parentesco", $datoBeneficiario["parentesco"], PDO::PARAM_STR);
             $pdo->bindParam(":fcreacion", $datoBeneficiario["fcreacion"],PDO::PARAM_STR);
+            $pdo->bindParam(":institucion", $datoBeneficiario["institucion"], PDO::PARAM_STR);
 
             return ($pdo->execute()?true:false);
 
@@ -79,7 +80,7 @@ class beneficiariosM extends conexionBD
     // funcion para obtener datos
     public static function obtenerDatosBeneficiarioM($valor){
         try {
-            $pdo = conexionBD::conexion()->prepare("SELECT id, nombreApellido, fnacimiento, direccion, celular, telefono, referencia, tipoMedio, estadoMedio, apoyoMedio, diagnostico, foto, nombreTutor, cedula, parentesco, fechaCreacion, fechaBaja, fechaAtendidos FROM catbeneficiario WHERE id = :id");
+            $pdo = conexionBD::conexion()->prepare("SELECT id, nombreApellido, fnacimiento, direccion, celular, telefono, referencia, tipoMedio, estadoMedio, apoyoMedio, diagnostico, foto, nombreTutor, cedula, parentesco, fechaCreacion, fechaBaja, fechaAtendidos, institucion FROM catbeneficiario WHERE id = :id");
 
             $pdo -> bindParam(":id",$valor,PDO::PARAM_INT);
             $pdo->execute();
@@ -108,7 +109,8 @@ class beneficiariosM extends conexionBD
             nombreTutor=:nombreTutor,
             cedula=:cedula,
             parentesco=:parentesco,
-            fechaCreacion=:factualizacion
+            fechaCreacion=:factualizacion,
+            institucion=:institucion
             WHERE id=:id");
 
             $pdo->bindParam(":id", $datosBeneficiarioActualizar["id"], PDO::PARAM_STR);
@@ -131,6 +133,7 @@ class beneficiariosM extends conexionBD
             $pdo->bindParam(":cedula", $datosBeneficiarioActualizar["cedula"], PDO::PARAM_STR);
             $pdo->bindParam(":parentesco", $datosBeneficiarioActualizar["parentesco"], PDO::PARAM_STR);
             $pdo->bindParam(":factualizacion", $datosBeneficiarioActualizar["factualizacion"], PDO::PARAM_STR);
+            $pdo->bindParam(":institucion", $datosBeneficiarioActualizar["institucion"], PDO::PARAM_STR);
 
             return ($pdo->execute()?true:false);
         } catch (exception $ex) {

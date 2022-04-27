@@ -40,6 +40,9 @@ $(".editarRegistroBeneficiario").click(function() {
             $("#nApoyoValue").val(response["apoyoMedio"]);
             $("#nApoyoValue").html(response["apoyoMedio"]);
 
+            $("#institucionValor").val(response["institucion"]);
+            $("#institucionValor").html(response["institucion"]);
+
             // file and img
             $("#fotoActual").val(response["foto"]);
             if (response["foto"] != "") {

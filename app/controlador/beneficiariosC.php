@@ -129,7 +129,8 @@ class beneficiariosC
                     "nombreTutor" => $_POST["tutornombre"],
                     "cedula" => $_POST["tutorcedula"],
                     "parentesco" => $_POST["tutorparentesco"],
-                    "fcreacion" => $currentTime);
+                    "fcreacion" => $currentTime,
+                    "institucion" => $_POST["institucion"]);
                     
                 $datosGuardados = beneficiariosM::datosGuardarBeneficiarioM($datosBeneficiario);
         
@@ -190,7 +191,8 @@ class beneficiariosC
                     "nombreTutor" => $_POST["tutornombreEdit"],
                     "cedula" => $_POST["tutorcedulaEdit"],
                     "parentesco" => $_POST["tutorparentescoEdit"],
-                    "factualizacion" => $currentTime
+                    "factualizacion" => $currentTime,
+                    "institucion" => $_POST["institucionEdit"]
                 );
                     
                 $datosGuardados = beneficiariosM::actualizarDatosBeneficiarioM($datosBeneficiarioActualizar);

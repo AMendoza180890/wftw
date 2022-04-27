@@ -77,8 +77,8 @@
                             <h2>Diagnostico</h2>
                             <!-- <input type="text" class="form-control input-lg" name="direccion" id="direccion" required> -->
                             <select class="form-control input-lg" name="diagnostico" id="diagnostico">
-                                <option value="diagnostico1">diagnostico1</option>
-                                <option value="diagnostico2">diagnostico2</option>
+                                <option value="Sindrome Down">Sindrome Down</option>
+                                <option value="Paralisis Cerebral">Paralisis Cerebral</option>
                                 <option value="diagnostico3">diagnostico3</option>
                             </select>
                         </div>
@@ -127,6 +127,16 @@
                             <option value="hermano">hermano</option>
                         </select>
                     </div>
+
+                    <div class="form-group">
+                        <h2>Institucion:</h2>
+                        <!-- <input type="text" class="form-control input-lg" name="direccion" id="direccion" required> -->
+                        <select class="form-control input-lg" name="institucion" id="institucion">
+                            <option value="Tesoros de Dios">Tesoros de Dios</option>
+                            <option value="Asambleas de Dios">Asambleas de Dios</option>
+                        </select>
+                    </div>
+
                 </div>
                 <div class="modal-footer">
                     <button type="submit" class="btn btn-primary">Guardar</button>
@@ -137,7 +147,9 @@
     </div>
 </div>
 <?php
+
 use app\controlador\beneficiariosC;
+
 $insertarBeneficiario  = new beneficiariosC();
 $insertarBeneficiario->datosGuardarBeneficiarioC();
 ?>

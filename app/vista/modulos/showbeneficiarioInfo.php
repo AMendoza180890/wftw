@@ -134,6 +134,16 @@
                         </select>
                     </div>
 
+                    <div class="form-group">
+                        <h2>Institucion:</h2>
+                        <!-- <input type="text" class="form-control input-lg" name="direccion" id="direccion" required> -->
+                        <select class="form-control input-lg" name="institucionEdit" id="institucionEdit" disabled>
+                            <option id="institucionValor"></option>
+                            <option value="Tesoros de Dios">Tesoros de Dios</option>
+                            <option value="Asambleas de Dios">Asambleas de Dios</option>
+                        </select>
+                    </div>
+
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
