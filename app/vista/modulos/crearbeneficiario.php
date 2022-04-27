@@ -24,7 +24,7 @@
 
                         <div class="form-group">
                             <h2>Edad:</h2>
-                            <input type="text" class="form-control input-lg" name="edad" id="edad" required>
+                            <input type="text" class="form-control input-lg" id="edad" disabled>
                         </div>
 
                         <div class="form-group">

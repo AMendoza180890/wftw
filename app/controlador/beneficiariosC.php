@@ -266,7 +266,7 @@ class beneficiariosC
                 $beneficiarioAtendidoParametros = array('id' => $codigo , 'fechaAtendido' => $currentTime );
                 $beneficiarioAtendido = beneficiariosM::beneficiarioAtendido($beneficiarioAtendidoParametros);
                 if ($beneficiarioAtendido == true) {
-                    echo '<script>window.open("http://localhost:82/wftw/app/controlador/reporteBeneficiario.php?codValor='.$codigo.'");</script>';
+                    echo '<script>window.open("app/controlador/reporteBeneficiario.php?codValor='.$codigo.'");</script>';
                     echo '<script>window.location="catbeneficiario"</script>';
                 } else {
                     echo 'Error - Ocurrio un error al hora de insertar';

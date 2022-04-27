@@ -79,7 +79,7 @@
                         <div class="form-group">
                             <h2>Diagnostico</h2>
                             <!-- <input type="text" class="form-control input-lg" name="direccion" id="direccion" disabled> -->
-                            <select class="form-control input-lg" name="diagnosticoEdit" id="diagnosticoEdit">
+                            <select class="form-control input-lg" name="diagnosticoEdit" id="diagnosticoEdit" disabled>
                                 <option id="diagValor"></option>
                                 <option value="diagnostico1">diagnostico1</option>
                                 <option value="diagnostico2">diagnostico2</option>
@@ -124,7 +124,7 @@
                     <div class="form-group">
                         <h2>Parentesco:</h2>
                         <!-- <input type="text" class="form-control input-lg" name="direccion" id="direccion" disabled> -->
-                        <select class="form-control input-lg" name="tutorparentescoEdit" id="tutorparentescoEdit">
+                        <select class="form-control input-lg" name="tutorparentescoEdit" id="tutorparentescoEdit" disabled>
                             <option id="tutorValor"></option>
                             <option value="padre">padre</option>
                             <option value="madre">madre</option>
