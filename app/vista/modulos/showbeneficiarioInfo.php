@@ -12,6 +12,11 @@
                     <div class="box-body">
 
                         <div class="form-group">
+                            <h2>Foto:</h2>
+                            <img src="app/vista/img/beneficiario/defecto.png" alt="imagen" class="img-thumbnail visor" width="100px;">
+                        </div>
+
+                        <div class="form-group">
                             <h2>Nombre y Apellido:</h2>
                             <input type="text" class="form-control input-lg" name="nombreApelidoEdit" id="nombreApelidoEdit" disabled>
                             <input type="hidden" name="idedit" id="idedit">
@@ -85,13 +90,6 @@
                                 <option value="diagnostico2">diagnostico2</option>
                                 <option value="diagnostico3">diagnostico3</option>
                             </select>
-                        </div>
-
-                        <div class="form-group">
-                            <h2>Foto:</h2>
-                            <img src="app/vista/img/beneficiario/defecto.png" alt="imagen" class="img-thumbnail visor" width="100px;">
-                            <input type="hidden" name="fotoActual" id="fotoActual">
-                            <p class="help-block">peso maximo permitido 200 Mb</p>
                         </div>
                     </div>
 

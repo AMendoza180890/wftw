@@ -83,7 +83,15 @@
                                 <option id="diagValor"></option>
                                 <option value="Sindrome Down">Sindrome Down</option>
                                 <option value="Paralisis Cerebral">Paralisis Cerebral</option>
-                                <option value="diagnostico3">diagnostico3</option>
+                                <option value="TEA">TEA (Transtorno del Espectro Autista)</option>
+                                <option value="Deficit Intelectual">Deficit Intelectual</option>
+                                <option value="Hidrocefalia">Hidrocefalia</option>
+                                <option value="Microcefalia">Microcefalia</option>
+                                <option value="Dislexia">Dislexia</option>
+                                <option value="Trastorno de Lenguaje">Trastorno de Lenguaje</option>
+                                <option value="TDAH">TDAH</option>
+                                <option value="Esquizofrenia">Esquizofrenia</option>
+                                <option value="TOC">TOC (Transtorno Obcesivo Compulsivo)</option>
                             </select>
                         </div>
 
