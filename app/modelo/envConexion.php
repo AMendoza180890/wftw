@@ -9,13 +9,14 @@ class envConexion{
             //  $SERVIDOR = "localhost";
             //  $USER = "tesorosd_admint";
             //  $PASSW = "3kaBZmmJ90zR";
-      
+
             //conexion en local
             $this->datos = array(
-                  "DATABASENAME" => "bdwftw", 
-                  'SERVIDOR' => "localhost", 
-                  'USER' => "root", 
-                  'PASSW' =>"");
+                  "DATABASENAME" => "tesorosd_wftw",
+                  'SERVIDOR' => "localhost",
+                  'USER' => "tesorosd_wftwAd",
+                  'PASSW' => "ys9omFi4L1px"
+            );
       }
 }
 ?>
