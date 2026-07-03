@@ -9,7 +9,7 @@ class rolesC{
 
             if ($listadeRoles) {
                 foreach ($listadeRoles as $key => $value) {
-                    echo '<option value="'.$value["rolid"].'">'.$value["catRolesDescripcion"].'</option>';
+                    echo '<option value="' . e((string) $value['rolid']) . '">' . e($value['catRolesDescripcion']) . '</option>';
                 }
             }
         } catch (Exception $ex) {
@@ -27,7 +27,7 @@ class rolesC{
     //                     if ($value["rolid"] == $setRolActual) {
     //                         echo '<option value="'.$value["rolid"].'" selected>'.$value["catRolesDescripcion"].'</option>';
     //                     }else{
-    //                         echo '<option value="'.$value["rolid"].'">'.$value["catRolesDescripcion"].'</option>';
+    //                         echo '<option value="' . e((string) $value['rolid']) . '">' . e($value['catRolesDescripcion']) . '</option>';
     //                     }
 
     //                 }

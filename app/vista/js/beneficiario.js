@@ -3,6 +3,7 @@ $(".editarRegistroBeneficiario").click(function() {
     let paramClaveValor = new FormData();
 
     paramClaveValor.append("id", codBeneficiario);
+    paramClaveValor.append("csrf_token", window.WFTW_CSRF);
 
     $.ajax({
         url: "app/Ajax/beneficiarioA.php",
@@ -13,7 +14,6 @@ $(".editarRegistroBeneficiario").click(function() {
         contentType: false,
         dataType: "json",
         success: function(response) {
-            //input text
             $("#idedit").val(response["id"]);
             $("#nombreApelidoEdit").val(response["nombreApellido"]);
             $("#fnacimientoEdit").val(response["fnacimiento"]);
@@ -24,26 +24,13 @@ $(".editarRegistroBeneficiario").click(function() {
             $("#tutornombreEdit").val(response["nombreTutor"]);
             $("#tutorcedulaEdit").val(response["cedula"]);
 
-            //select options
-            $("#diagValor").val(response["diagnostico"]);
-            $("#diagValor").html(response["diagnostico"]);
+            $("#diagnosticoEdit").val(response["diagnostico"]);
+            $("#tMedioEdit").val(response["tipoMedio"]);
+            $("#eMedioEdit").val(response["estadoMedio"]);
+            $("#nApoyoEdit").val(response["apoyoMedio"]);
+            $("#tutorparentescoEdit").val(response["parentesco"]);
+            $("#institucionEdit").val(response["institucion"]);
 
-            $("#tutorValor").val(response["parentesco"]);
-            $("#tutorValor").html(response["parentesco"]);
-
-            $("#tMedioValue").val(response["tipoMedio"]);
-            $("#tMedioValue").html(response["tipoMedio"]);
-
-            $("#eMedioValue").val(response["estadoMedio"]);
-            $("#eMedioValue").html(response["estadoMedio"]);
-
-            $("#nApoyoValue").val(response["apoyoMedio"]);
-            $("#nApoyoValue").html(response["apoyoMedio"]);
-
-            $("#institucionValor").val(response["institucion"]);
-            $("#institucionValor").html(response["institucion"]);
-
-            // file and img
             $("#fotoActual").val(response["foto"]);
             if (response["foto"] != "") {
                 $(".visor").attr("src", response["foto"]);
@@ -58,35 +45,44 @@ $(".editarRegistroBeneficiario").click(function() {
     });
 });
 
-//dar de baja al beneficiario
 $(".desactivarRegistroBeneficiario").click(function() {
     let codigo = $(this).attr("codValor");
-    window.location = "index.php?ruta=catbeneficiario&CodValor=" + codigo;
+    $.post("index.php?ruta=catbeneficiario", {
+        CodValor: codigo,
+        csrf_token: window.WFTW_CSRF
+    }).always(function() {
+        window.location = "catbeneficiario";
+    });
 });
 
-//dar de alta al beneficiario
 $(".activarBeneficiario").click(function() {
     let codigo = $(this).attr("codValor");
-    window.location = "index.php?ruta=catbeneficiarioBaja&CodValor=" + codigo;
+    $.post("index.php?ruta=catbeneficiarioBaja", {
+        CodValor: codigo,
+        csrf_token: window.WFTW_CSRF
+    }).always(function() {
+        window.location = "catbeneficiarioBaja";
+    });
 });
 
-//Beneficiario Atendido
 $(".beneficiarioAtendido").click(function() {
     let codigo = $(this).attr("CodValorAtendido");
-    window.location = "index.php?ruta=catbeneficiario&CodValorAtendido=" + codigo;
+    $.post("index.php?ruta=catbeneficiario", {
+        CodValorAtendido: codigo,
+        csrf_token: window.WFTW_CSRF
+    }).always(function() {
+        window.location = "catbeneficiario";
+    });
 });
 
-//mostrar la edad cuando cambie la fecha de nacimento cuando se ingrese el beneficiario
 $("#fnacimiento").change(function() {
     calEdad("fnacimiento", "edad");
 });
 
-//mostrar la edad cuando cambie la fecha de nacimiento cuando se edite el beneficiario.
 $("#fnacimientoEdit").change(function() {
     calEdad("fnacimientoEdit", "edadEdit");
 });
 
-// calcular edad.
 function calEdad(idEntrada, idSalida) {
     let simbol = "#";
     let entrada = simbol.concat(idEntrada);

@@ -2,6 +2,10 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <form role="form" method="post" enctype="multipart/form-data">
+                <?php
+                use app\controlador\authC;
+                echo authC::csrfField();
+                ?>
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal">
                         <li class="fa fa-time"></li>

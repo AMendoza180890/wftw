@@ -3,7 +3,6 @@ namespace app\modelo;
 use app\modelo\conexionBD;
 use Exception;
 
-require_once 'conexionBD.php';
 class homeM extends conexionBD{
     public static function dashboardTotalBeneficiarioRegistradoM(){
         try {
@@ -23,7 +22,7 @@ class homeM extends conexionBD{
             //if ($pdo->execute()) {
                 return (($pdo->execute()) ? $pdo->fetch():$pdo->execute());
             //}
-        } catch (exception $ex) {
+        } catch (Exception $ex) {
             echo 'Error -'.$ex;
         }
     }
@@ -35,7 +34,7 @@ class homeM extends conexionBD{
             //if ($pdo->execute()) {
                 return (($pdo->execute()) ? $pdo->fetchAll():$pdo->execute());
             //}
-        } catch (exception $ex) {
+        } catch (Exception $ex) {
             echo 'Error -'.$ex;
         }
     }
@@ -47,7 +46,7 @@ class homeM extends conexionBD{
     //         //if ($pdo->execute()) {
     //             return (($pdo->execute()) ? $pdo->fetch():$pdo->execute());
     //         //}
-    //     } catch (exception $ex) {
+    //     } catch (Exception $ex) {
     //         echo 'Error -'.$ex;
     //     }
     // }
@@ -60,7 +59,7 @@ class homeM extends conexionBD{
             //if ($pdo->execute()) {
                 return (($pdo->execute()) ? $pdo->fetchAll(): $pdo->execute());
             //}
-        } catch (exception $ex) {
+        } catch (Exception $ex) {
             // echo '<script>Console.log("Error -'.print($ex->getMessage()).'");</script>';
             return false;
         }

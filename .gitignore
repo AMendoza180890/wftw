@@ -1,1 +1,9 @@
 /vendor/
+/composer.phar
+.env
+app/modelo/envConexion.local.php
+app/vista/img/usuario/*
+app/vista/img/beneficiario/*
+!app/vista/img/usuario/defecto.png
+!app/vista/img/beneficiario/defecto.png
+app/bkdatabase/*.sql

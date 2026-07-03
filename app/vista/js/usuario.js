@@ -1,8 +1,8 @@
-// funcion para obtener registros por ajax
 $(".TablaUsuario").on("click", ".EditRegistroUsuario", function() {
     let codValor = $(this).attr("codValor");
     let datos = new FormData();
     datos.append("id", codValor);
+    datos.append("csrf_token", window.WFTW_CSRF);
 
     $.ajax({
         method: "POST",
@@ -15,22 +15,26 @@ $(".TablaUsuario").on("click", ".EditRegistroUsuario", function() {
         success: function(response) {
             $("#idEdit").val(response["id"]);
             $("#usuarioEdit").val(response["usuario"]);
-            $("#claveEdit").val(response["clave"]);
-            $("#rolEdit").html(response["catRolesDescripcion"]);
+            $("#claveEdit").val("");
             $("#rolEdit").val(response["rolid"]);
             $("#fotoActual").val(response["foto"]);
 
             if (response["foto"] != "") {
                 $(".visor").attr("src", response["foto"]);
             } else {
-                $(".visor").attr("src", "app/vista/img/usuario/defecto.png")
+                $(".visor").attr("src", "app/vista/img/usuario/defecto.png");
             }
         }
     });
-})
+});
 
-// funcion para desactivar registro por GET
 $(".TablaUsuario").on("click", ".DesactivarRegistroUsuario", function() {
     let codValor = $(this).attr("codValor");
-    window.location = "index.php?ruta=catusuarios&CodValor=" + codValor;
-})
+
+    $.post("index.php?ruta=catusuarios", {
+        CodValor: codValor,
+        csrf_token: window.WFTW_CSRF
+    }).always(function() {
+        window.location = "catusuarios";
+    });
+});

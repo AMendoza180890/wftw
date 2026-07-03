@@ -36,7 +36,7 @@ class beneficiariosM extends conexionBD
     public static function mostrarListaBeneficiarioAtendidosM()
     {
         try {
-            $pdo = conexionBD::conexion()->prepare("SELECT id, nombreApellido, fnacimiento, direccion, celular, telefono, referencia, diagnostico, foto, nombreTutor, cedula, parentesco, fechaBaja,fechaAtendidos FROM catbeneficiario WHERE fechaBaja IS NULL ORDER BY fechaAtendidos ASC");
+            $pdo = conexionBD::conexion()->prepare("SELECT id, nombreApellido, fnacimiento, direccion, celular, telefono, referencia, diagnostico, foto, nombreTutor, cedula, parentesco, fechaBaja, fechaAtendidos FROM catbeneficiario WHERE fechaBaja IS NULL AND fechaAtendidos IS NOT NULL ORDER BY fechaAtendidos ASC");
             $pdo->execute();
             return $pdo->fetchAll();
         } catch (Exception $ex) {
@@ -72,7 +72,7 @@ class beneficiariosM extends conexionBD
 
             return ($pdo->execute()?true:false);
 
-        } catch (exception $ex) {
+        } catch (Exception $ex) {
             echo 'error: ' . $ex->getMessage();
         }
     }
@@ -85,7 +85,7 @@ class beneficiariosM extends conexionBD
             $pdo -> bindParam(":id",$valor,PDO::PARAM_INT);
             $pdo->execute();
             return $pdo->fetch();
-        } catch (exception $ex) {
+        } catch (Exception $ex) {
             echo 'error: '.$ex->getMessage();
         }
     }
@@ -136,7 +136,7 @@ class beneficiariosM extends conexionBD
             $pdo->bindParam(":institucion", $datosBeneficiarioActualizar["institucion"], PDO::PARAM_STR);
 
             return ($pdo->execute()?true:false);
-        } catch (exception $ex) {
+        } catch (Exception $ex) {
             echo 'error: '.$ex->getMessage();
         }
     }
@@ -153,7 +153,7 @@ class beneficiariosM extends conexionBD
 
             return ($pdo->execute()?true:false);
 
-        } catch (exception $ex) {
+        } catch (Exception $ex) {
             echo 'error '.$ex->getMessage();
         }
     }
@@ -170,7 +170,7 @@ class beneficiariosM extends conexionBD
 
             return ($pdo->execute() ? true : false);
 
-        } catch (exception $ex) {
+        } catch (Exception $ex) {
             echo 'error ' . $ex->getMessage();
         }
     }
@@ -192,7 +192,7 @@ class beneficiariosM extends conexionBD
                 return false;
             }
 
-        } catch (exception $ex) {
+        } catch (Exception $ex) {
             echo 'error '. $ex->getMessage();
         }
     }

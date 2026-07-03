@@ -2,6 +2,10 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <form role="form" method="post" enctype="multipart/form-data">
+                <?php
+                use app\controlador\authC;
+                echo authC::csrfField();
+                ?>
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal">
                         <li class="fa fa-time"></li>
@@ -33,7 +37,7 @@
                         <div class="form-group">
                             <h2>Foto:</h2>
                             <input type="file" name="fotoNuevo" id="fotoNuevo">
-                            <p class="help-block">peso maximo permitido 200 Mb</p>
+                            <p class="help-block">Peso maximo permitido 2 MB</p>
                         </div>
                     </div>
                 </div>

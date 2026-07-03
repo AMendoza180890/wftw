@@ -6,6 +6,10 @@
   <div class="login-box-body">
     <p class="login-box-msg">Iniciar Sesión</p>
     <form action="" method="post">
+      <?php
+      use app\controlador\authC;
+      echo authC::csrfField();
+      ?>
       <div class="form-group has-feedback">
         <input type="username" class="form-control" name="usuarioIngreso" placeholder="Usuario">
         <span class="glyphicon glyphicon-envelope form-control-feedback"></span>

@@ -2,4 +2,8 @@ Options All -Indexes
 
 RewriteEngine on
 
+# Block sensitive paths and env file
+RewriteRule ^\.env$ - [F,L]
+RewriteRule ^app/(modelo|bkdatabase)/ - [F,L]
+
 RewriteRule ^([a-zA-Z]+)$ index.php?ruta=$1

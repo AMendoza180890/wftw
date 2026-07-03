@@ -1,282 +1,295 @@
 <?php
+
 namespace app\controlador;
+
 use app\modelo\beneficiariosM;
-use app\controlador\tratamientoRecursos;
 use DateTime;
 use DateTimeZone;
 use Exception;
 
-// use FPDF;
-// require_once ('fpdf/fpdf.php');
-//require_once '../librerias/dompdf/autoload.inc.php';
-//use Dompdf\Dompdf;
 class beneficiariosC
 {
-    // mostrar en lista del beneficiario activos.
     public function mostrarListaBeneficiarioC()
     {
         try {
             $ListaBeneficiario = beneficiariosM::mostrarListaBeneficiarioM();
-            if ($ListaBeneficiario != 0) {
-                foreach ($ListaBeneficiario as $key => $value) {
+
+            if ($ListaBeneficiario) {
+                foreach ($ListaBeneficiario as $value) {
                     echo '<tr>
-                        <td>' . $value["id"] . '</td>
-                        <td>' . $value["nombreApellido"] . '</td>
-                        <td>' . $value["fnacimiento"] . '</td>
-                        <td>' . $value["diagnostico"] . '</td>
-                        <td>' . $value["celular"] . '</td>
-                        <td>' . $value["telefono"] . '</td>
-                        <td>' . $value["nombreTutor"] . '</td>
+                        <td>' . e((string) $value['id']) . '</td>
+                        <td>' . e($value['nombreApellido']) . '</td>
+                        <td>' . e($value['fnacimiento']) . '</td>
+                        <td>' . e($value['diagnostico']) . '</td>
+                        <td>' . e($value['cedula']) . '</td>
+                        <td>' . e($value['telefono']) . '</td>
+                        <td>' . e($value['nombreTutor']) . '</td>
                         <td>
                             <div class="btn-group">
-                                <button class="btn btn-success editarRegistroBeneficiario" codValor=' . $value["id"] . '><i data-toggle="modal" data-target="#editarbeneficiario" class="fa fa-pencil"></i></button>
-                                <button class="btn btn-danger desactivarRegistroBeneficiario" codValor=' . $value["id"] . '><i class="fa fa-times"></i></button>
-                                <button class="btn btn-primary beneficiarioAtendido" CodValorAtendido=' . $value["id"] . '><i class="fa fa-print"></i></button>
+                                <button type="button" class="btn btn-success editarRegistroBeneficiario" codValor="' . e((string) $value['id']) . '"><i data-toggle="modal" data-target="#editarbeneficiario" class="fa fa-pencil"></i></button>
+                                <button type="button" class="btn btn-danger desactivarRegistroBeneficiario" codValor="' . e((string) $value['id']) . '"><i class="fa fa-times"></i></button>
+                                <button type="button" class="btn btn-primary beneficiarioAtendido" CodValorAtendido="' . e((string) $value['id']) . '"><i class="fa fa-print"></i></button>
                             </div>
                         </td>
                     </tr>';
                 }
             }
-        } catch (exception $ex) {
-            echo 'error:' . $ex->getMessage();
-        }
-    }
-
-    // mostrar en lista del beneficiario dado de bajas.
-    public function mostrarListaBeneficiarioBajaC()
-    {
-        try {
-            $ListaBeneficiarioBaja = beneficiariosM::mostrarListaBeneficiarioBajaM();
-            if ($ListaBeneficiarioBaja != 0) {
-                foreach ($ListaBeneficiarioBaja as $key => $value) {
-                    echo '<tr>
-                        <td>' . $value["id"] . '</td>
-                        <td>' . $value["nombreApellido"] . '</td>
-                        <td>' . $value["fechaBaja"] . '</td>
-                        <td>' . $value["diagnostico"] . '</td>
-                        <td>' . $value["celular"] . '</td>
-                        <td>' . $value["telefono"] . '</td>
-                        <td>' . $value["nombreTutor"] . '</td>
-                        <td>
-                            <div class="btn-group">
-                                <button class="btn btn-success activarBeneficiario" codValor=' . $value["id"] . '><i class="fa fa-pencil"></i></button>
-                            </div>
-                        </td>
-                    </tr>';
-                }
-            }
-        } catch (exception $ex) {
-            echo 'error:' . $ex->getMessage();
-        }
-    }
-
-    // mostrar en lista del beneficiario atendidos.
-    public function mostrarListaBeneficiarioAtendidosC()
-    {
-        try {
-            $ListaBeneficiarioBaja = beneficiariosM::mostrarListaBeneficiarioAtendidosM();
-            if ($ListaBeneficiarioBaja != 0) {
-                foreach ($ListaBeneficiarioBaja as $key => $value) {
-                    echo '<tr>
-                        <td>' . $value["id"] . '</td>
-                        <td>' . $value["nombreApellido"] . '</td>
-                        <td>' . $value["fechaAtendidos"] . '</td>
-                        <td>' . $value["diagnostico"] . '</td>
-                        <td>' . $value["celular"] . '</td>
-                        <td>' . $value["telefono"] . '</td>
-                        <td>' . $value["nombreTutor"] . '</td>
-                        <td>
-                            <div class="btn-group">
-                                <button class="btn btn-success editarRegistroBeneficiario" codValor=' . $value["id"] . '><i data-toggle="modal" data-target="#editarbeneficiario" class="fa fa-pencil"></i></button>
-                            </div>
-                        </td>
-                    </tr>';
-                }
-            }
-        } catch (exception $ex) {
-            echo 'error:' . $ex->getMessage();
-        }
-    }
-
-//guardar informacion del beneficiario
-    public function datosGuardarBeneficiarioC()
-    {
-        try {
-            if(isset($_POST["nombreApelido"])){
-                $rutaImagenProcesada = "app/vista/img/beneficiario/defecto.png";
-                if(isset($_FILES["fotoNuevo"]["tmp_name"])){
-                    $rutaImagenProcesada = tratamientoRecursos::tratamientoTipoImagenBeneficiario($_FILES["fotoNuevo"]["tmp_name"], $_FILES["fotoNuevo"]);
-                }
-                
-                //OBTENER Y DAR FORMATO LA FECHA DE MANAGUA
-                $dtz = new DateTimeZone("America/Managua");
-                $dt = new DateTime("now", $dtz);
-                //Stores time as "2021-04-04T13:35:48":
-                $currentTime = $dt->format("Y-m-d") . "T" . $dt->format("H:i:s");
-
-                $datosBeneficiario  = array(
-                    "nombreApellido" => $_POST["nombreApelido"], 
-                    "fnacimiento" => $_POST["fnacimiento"],
-                    "direccion" => $_POST["direccion"],
-                    "celular" => $_POST["celular"],
-                    "telefono" => $_POST["telefono"],
-                    "referencia" => $_POST["referido"],
-                    "tipoMedio" => $_POST["tMedio"],
-                    "estadoMedio" => $_POST["eMedio"],
-                    "apoyoMedio" => $_POST["nApoyo"],
-                    "diagnostico" => $_POST["diagnostico"],
-                    "foto" => $rutaImagenProcesada,
-                    "nombreTutor" => $_POST["tutornombre"],
-                    "cedula" => $_POST["tutorcedula"],
-                    "parentesco" => $_POST["tutorparentesco"],
-                    "fcreacion" => $currentTime,
-                    "institucion" => $_POST["institucion"]);
-                    
-                $datosGuardados = beneficiariosM::datosGuardarBeneficiarioM($datosBeneficiario);
-        
-                if ($datosGuardados == true) {
-                    echo '<script>window.location="catbeneficiario"</script>';
-                } else {
-                    echo 'Error - Ocurrio un error al hora de insertar';
-                }
-            }
-
         } catch (Exception $ex) {
             echo 'error:' . $ex->getMessage();
         }
     }
 
-//recuperar informacion del beneficiario para el formulario
+    public function mostrarListaBeneficiarioBajaC()
+    {
+        try {
+            $ListaBeneficiarioBaja = beneficiariosM::mostrarListaBeneficiarioBajaM();
+
+            if ($ListaBeneficiarioBaja) {
+                foreach ($ListaBeneficiarioBaja as $value) {
+                    echo '<tr>
+                        <td>' . e((string) $value['id']) . '</td>
+                        <td>' . e($value['nombreApellido']) . '</td>
+                        <td>' . e($value['fechaBaja']) . '</td>
+                        <td>' . e($value['diagnostico']) . '</td>
+                        <td>' . e($value['cedula']) . '</td>
+                        <td>' . e($value['telefono']) . '</td>
+                        <td>' . e($value['nombreTutor']) . '</td>
+                        <td>
+                            <div class="btn-group">
+                                <button type="button" class="btn btn-success activarBeneficiario" codValor="' . e((string) $value['id']) . '"><i class="fa fa-pencil"></i></button>
+                            </div>
+                        </td>
+                    </tr>';
+                }
+            }
+        } catch (Exception $ex) {
+            echo 'error:' . $ex->getMessage();
+        }
+    }
+
+    public function mostrarListaBeneficiarioAtendidosC()
+    {
+        try {
+            $ListaBeneficiarioBaja = beneficiariosM::mostrarListaBeneficiarioAtendidosM();
+
+            if ($ListaBeneficiarioBaja) {
+                foreach ($ListaBeneficiarioBaja as $value) {
+                    echo '<tr>
+                        <td>' . e((string) $value['id']) . '</td>
+                        <td>' . e($value['nombreApellido']) . '</td>
+                        <td>' . e($value['fechaAtendidos']) . '</td>
+                        <td>' . e($value['diagnostico']) . '</td>
+                        <td>' . e($value['cedula']) . '</td>
+                        <td>' . e($value['telefono']) . '</td>
+                        <td>' . e($value['nombreTutor']) . '</td>
+                        <td>
+                            <div class="btn-group">
+                                <button type="button" class="btn btn-success editarRegistroBeneficiario" codValor="' . e((string) $value['id']) . '"><i data-toggle="modal" data-target="#editarbeneficiario" class="fa fa-pencil"></i></button>
+                            </div>
+                        </td>
+                    </tr>';
+                }
+            }
+        } catch (Exception $ex) {
+            echo 'error:' . $ex->getMessage();
+        }
+    }
+
+    public function datosGuardarBeneficiarioC()
+    {
+        try {
+            if (!isset($_POST['nombreApelido'])) {
+                return;
+            }
+
+            authC::requireCsrf();
+
+            $rutaImagenProcesada = 'app/vista/img/beneficiario/defecto.png';
+
+            if (!empty($_FILES['fotoNuevo']['tmp_name'])) {
+                $uploaded = tratamientoRecursos::tratamientoTipoImagenBeneficiario(
+                    $_FILES['fotoNuevo']['tmp_name'],
+                    $_FILES['fotoNuevo']
+                );
+
+                if ($uploaded !== '') {
+                    $rutaImagenProcesada = $uploaded;
+                }
+            }
+
+            $dtz = new DateTimeZone('America/Managua');
+            $dt = new DateTime('now', $dtz);
+            $currentTime = $dt->format('Y-m-d') . 'T' . $dt->format('H:i:s');
+
+            $datosBeneficiario = [
+                'nombreApellido' => $_POST['nombreApelido'],
+                'fnacimiento' => $_POST['fnacimiento'],
+                'direccion' => $_POST['direccion'],
+                'celular' => $_POST['celular'],
+                'telefono' => $_POST['telefono'],
+                'referencia' => $_POST['referido'],
+                'tipoMedio' => $_POST['tMedio'],
+                'estadoMedio' => $_POST['eMedio'],
+                'apoyoMedio' => $_POST['nApoyo'],
+                'diagnostico' => $_POST['diagnostico'],
+                'foto' => $rutaImagenProcesada,
+                'nombreTutor' => $_POST['tutornombre'],
+                'cedula' => $_POST['tutorcedula'],
+                'parentesco' => $_POST['tutorparentesco'],
+                'fcreacion' => $currentTime,
+                'institucion' => $_POST['institucion'],
+            ];
+
+            if (beneficiariosM::datosGuardarBeneficiarioM($datosBeneficiario)) {
+                echo '<script>window.location="catbeneficiario"</script>';
+            } else {
+                echo 'Error - Ocurrio un error al hora de insertar';
+            }
+        } catch (Exception $ex) {
+            echo 'error:' . $ex->getMessage();
+        }
+    }
+
     public static function obtenerDatosBeneficiarioC($valor)
     {
         try {
             if (isset($valor)) {
-                $consultarDatosBeneficiario = beneficiariosM::obtenerDatosBeneficiarioM($valor);
-                return $consultarDatosBeneficiario;
+                return beneficiariosM::obtenerDatosBeneficiarioM($valor);
             }
-        } catch (exception $ex) {
+        } catch (Exception $ex) {
             echo 'error:' . $ex->getMessage();
         }
+
+        return false;
     }
-//actualizar al beneficiario
-    public function actualizarDatosBeneficiario(){
+
+    public function actualizarDatosBeneficiario()
+    {
         try {
-            if(isset($_POST["nombreApelidoEdit"])){
-                
-                $rutaImagenProcesada = $_POST["fotoActual"];
+            if (!isset($_POST['nombreApelidoEdit'])) {
+                return;
+            }
 
-                if(isset($_FILES["fotoNuevoEdit"]["tmp_name"])){
-                    $rutaImagenProcesada = tratamientoRecursos::tratamientoTipoImagenBeneficiario($_FILES["fotoNuevoEdit"]["tmp_name"], $_FILES["fotoNuevoEdit"]);
-                }
+            authC::requireCsrf();
 
-                //OBTENER Y DAR FORMATO LA FECHA DE MANAGUA
-                $dtz = new DateTimeZone("America/Managua");
-                $dt = new DateTime("now", $dtz);
-                //Stores time as "2021-04-04T13:35:48":
-                $currentTime = $dt->format("Y-m-d") . "T" . $dt->format("H:i:s");
+            $rutaImagenProcesada = $_POST['fotoActual'];
 
-                $datosBeneficiarioActualizar  = array(
-                    "id" => $_POST["idedit"],
-                    "nombreApellido" => $_POST["nombreApelidoEdit"], 
-                    "fnacimiento" => $_POST["fnacimientoEdit"],
-                    "direccion" => $_POST["direccionEdit"],
-                    "celular" => $_POST["celularEdit"],
-                    "telefono" => $_POST["telefonoEdit"],
-                    "referencia" => $_POST["referidoEdit"],
-                    "tipoMedio" => $_POST["tMedioEdit"],
-                    "estadoMedio" => $_POST["eMedioEdit"],
-                    "apoyoMedio" => $_POST["nApoyoEdit"],
-                    "diagnostico" => $_POST["diagnosticoEdit"],
-                    "foto" => $rutaImagenProcesada,
-                    "nombreTutor" => $_POST["tutornombreEdit"],
-                    "cedula" => $_POST["tutorcedulaEdit"],
-                    "parentesco" => $_POST["tutorparentescoEdit"],
-                    "factualizacion" => $currentTime,
-                    "institucion" => $_POST["institucionEdit"]
+            if (!empty($_FILES['fotoNuevoEdit']['tmp_name'])) {
+                $uploaded = tratamientoRecursos::tratamientoTipoImagenBeneficiario(
+                    $_FILES['fotoNuevoEdit']['tmp_name'],
+                    $_FILES['fotoNuevoEdit']
                 );
-                    
-                $datosGuardados = beneficiariosM::actualizarDatosBeneficiarioM($datosBeneficiarioActualizar);
-        
-                if ($datosGuardados == true) {
-                    echo '<script>window.location="catbeneficiario"</script>';
-                } else {
-                    echo 'Error - Ocurrio un error al hora de insertar';
+
+                if ($uploaded !== '') {
+                    $rutaImagenProcesada = $uploaded;
                 }
             }
-        } catch (exception $ex) {
-            echo 'error: '.$ex->getMessage();
+
+            $dtz = new DateTimeZone('America/Managua');
+            $dt = new DateTime('now', $dtz);
+            $currentTime = $dt->format('Y-m-d') . 'T' . $dt->format('H:i:s');
+
+            $datosBeneficiarioActualizar = [
+                'id' => $_POST['idedit'],
+                'nombreApellido' => $_POST['nombreApelidoEdit'],
+                'fnacimiento' => $_POST['fnacimientoEdit'],
+                'direccion' => $_POST['direccionEdit'],
+                'celular' => $_POST['celularEdit'],
+                'telefono' => $_POST['telefonoEdit'],
+                'referencia' => $_POST['referidoEdit'],
+                'tipoMedio' => $_POST['tMedioEdit'],
+                'estadoMedio' => $_POST['eMedioEdit'],
+                'apoyoMedio' => $_POST['nApoyoEdit'],
+                'diagnostico' => $_POST['diagnosticoEdit'],
+                'foto' => $rutaImagenProcesada,
+                'nombreTutor' => $_POST['tutornombreEdit'],
+                'cedula' => $_POST['tutorcedulaEdit'],
+                'parentesco' => $_POST['tutorparentescoEdit'],
+                'factualizacion' => $currentTime,
+                'institucion' => $_POST['institucionEdit'],
+            ];
+
+            if (beneficiariosM::actualizarDatosBeneficiarioM($datosBeneficiarioActualizar)) {
+                echo '<script>window.location="catbeneficiario"</script>';
+            } else {
+                echo 'Error - Ocurrio un error al hora de insertar';
+            }
+        } catch (Exception $ex) {
+            echo 'error: ' . $ex->getMessage();
         }
     }
-// dar de baja al beneficiario.
+
     public function desactivarBeneficiarioC()
     {
         try {
-            if (isset($_GET["CodValor"])) {
-                //OBTENER Y DAR FORMATO LA FECHA DE MANAGUA
-                $dtz = new DateTimeZone("America/Managua");
-                $dt = new DateTime("now", $dtz);
-                //Stores time as "2021-04-04T13:35:48":
-                $currentTime = $dt->format("Y-m-d") . "T" . $dt->format("H:i:s");
-
-                $codigo = $_GET["CodValor"];
-
-                $datosDesactivarBeneficiario = array("id"=>$codigo, "fechaBaja" => $currentTime);
-
-                $DesactivarBeneficiario = beneficiariosM::desactivarBeneficiarioM($datosDesactivarBeneficiario);
-
-                if ($DesactivarBeneficiario == true) {
-                    echo '<script>window.location="catbeneficiario"</script>';
-                } else {
-                    echo 'Error - Ocurrio un error al hora de insertar';
-                }
-
+            if ($_SERVER['REQUEST_METHOD'] !== 'POST' || !isset($_POST['CodValor'])) {
+                return;
             }
-        } catch (exception $ex) {
+
+            authC::requireCsrf();
+
+            $dtz = new DateTimeZone('America/Managua');
+            $dt = new DateTime('now', $dtz);
+            $currentTime = $dt->format('Y-m-d') . 'T' . $dt->format('H:i:s');
+            $codigo = (int) $_POST['CodValor'];
+
+            $datosDesactivarBeneficiario = ['id' => $codigo, 'fechaBaja' => $currentTime];
+
+            if (beneficiariosM::desactivarBeneficiarioM($datosDesactivarBeneficiario)) {
+                echo '<script>window.location="catbeneficiario"</script>';
+            } else {
+                echo 'Error - Ocurrio un error al hora de insertar';
+            }
+        } catch (Exception $ex) {
             echo 'error ' . $ex->getMessage();
         }
     }
 
-    //dar de alta al beneficiario
     public function activarBeneficiarioC()
     {
         try {
-            if (isset($_GET["CodValor"])) {
-                $codigo = $_GET["CodValor"];
-                $activarBeneficiario = beneficiariosM::activarBeneficiarioM($codigo);
-                if ($activarBeneficiario == true) {
-                    echo '<script>window.location="catbeneficiarioBaja"</script>';
-                } else {
-                    echo 'Error - Ocurrio un error al hora de insertar';
-                }
+            if ($_SERVER['REQUEST_METHOD'] !== 'POST' || !isset($_POST['CodValor'])) {
+                return;
             }
-        } catch (exception $ex) {
+
+            authC::requireCsrf();
+
+            $codigo = (int) $_POST['CodValor'];
+
+            if (beneficiariosM::activarBeneficiarioM($codigo)) {
+                echo '<script>window.location="catbeneficiarioBaja"</script>';
+            } else {
+                echo 'Error - Ocurrio un error al hora de insertar';
+            }
+        } catch (Exception $ex) {
             echo 'error ' . $ex->getMessage();
         }
     }
 
-    // Imprimir pagina y actualizar estado de activo a atendido al beneficiario.
     public function beneficiarioAtendidoC()
     {
         try {
-            if (isset($_GET["CodValorAtendido"])) {
-                //OBTENER Y DAR FORMATO LA FECHA DE MANAGUA
-                $dtz = new DateTimeZone("America/Managua");
-                $dt = new DateTime("now", $dtz);
-                //Stores time as "2021-04-04T13:35:48":
-                $currentTime = $dt->format("Y-m-d") . "T" . $dt->format("H:i:s");
-                $codigo = $_GET["CodValorAtendido"];
-                $beneficiarioAtendidoParametros = array('id' => $codigo , 'fechaAtendido' => $currentTime );
-                $beneficiarioAtendido = beneficiariosM::beneficiarioAtendido($beneficiarioAtendidoParametros);
-                if ($beneficiarioAtendido == true) {
-                    echo '<script>window.open("app/controlador/reporteBeneficiario.php?codValor='.$codigo.'");</script>';
-                    echo '<script>window.location="catbeneficiario"</script>';
-                } else {
-                    echo 'Error - Ocurrio un error al hora de insertar';
-                }
+            if ($_SERVER['REQUEST_METHOD'] !== 'POST' || !isset($_POST['CodValorAtendido'])) {
+                return;
             }
-        } catch (exception $ex) {
+
+            authC::requireCsrf();
+
+            $dtz = new DateTimeZone('America/Managua');
+            $dt = new DateTime('now', $dtz);
+            $currentTime = $dt->format('Y-m-d') . 'T' . $dt->format('H:i:s');
+            $codigo = (int) $_POST['CodValorAtendido'];
+
+            $beneficiarioAtendidoParametros = ['id' => $codigo, 'fechaAtendido' => $currentTime];
+
+            if (beneficiariosM::beneficiarioAtendido($beneficiarioAtendidoParametros)) {
+                echo '<script>window.open("app/controlador/reporteBeneficiario.php?codValor=' . e((string) $codigo) . '");</script>';
+                echo '<script>window.location="catbeneficiario"</script>';
+            } else {
+                echo 'Error - Ocurrio un error al hora de insertar';
+            }
+        } catch (Exception $ex) {
             echo 'error ' . $ex->getMessage();
         }
     }
 }
-?>

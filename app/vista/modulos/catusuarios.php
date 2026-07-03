@@ -20,7 +20,6 @@
             <tr>
               <th>Nº</th>
               <th>Usuario</th>
-              <th>Clave</th>
               <th>Foto</th>
               <th>Rol</th>
               <th>Editar/Desactivar</th>

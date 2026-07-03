@@ -1,27 +1,32 @@
 <?php
-use app\controlador\usuariosC;
-use app\modelo\usuariosM;
-use app\modelo\conexionBD;
-use app\modelo\envConexion;
-require_once '../modelo/conexionBD.php';
-require_once '../controlador/usuariosC.php';
-require_once '../modelo/usuariosM.php';
-require_once '../modelo/envConexion.php';
-// require_once '../controlador/rolesC.php';
-// require_once '../modelo/rolesM.php';
 
-class usuariosAjax{
-    public $id;
-    public function usuarioEditA(){
-        $valor = $this->id;
-        $editarUsuario = usuariosC::editarRegistroUsuarioC($valor);
-        echo json_encode($editarUsuario);
-    }
+require __DIR__ . '/../../app/bootstrap.php';
+
+use app\controlador\authC;
+use app\controlador\usuariosC;
+
+authC::requireRole([1]);
+
+header('Content-Type: application/json; charset=utf-8');
+
+if ($_SERVER['REQUEST_METHOD'] !== 'POST' || !isset($_POST['id'])) {
+    http_response_code(400);
+    echo json_encode(['error' => 'Missing id']);
+    exit;
 }
-if (isset($_POST["id"])) {
-    $editarUsuario = new usuariosAjax;
-    $editarUsuario -> id = $_POST["id"];
-    $editarUsuario -> usuarioEditA();
-    // usuariosAjax::setRolEditA($_POST["id"]);
+
+if (!authC::validateCsrf()) {
+    http_response_code(403);
+    echo json_encode(['error' => 'Invalid CSRF token']);
+    exit;
 }
-?>
+
+$editarUsuario = usuariosC::editarRegistroUsuarioC((int) $_POST['id']);
+
+if (!$editarUsuario) {
+    http_response_code(404);
+    echo json_encode(['error' => 'User not found']);
+    exit;
+}
+
+echo json_encode($editarUsuario);

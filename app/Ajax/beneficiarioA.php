@@ -1,37 +1,32 @@
 <?php
 
+require __DIR__ . '/../../app/bootstrap.php';
+
+use app\controlador\authC;
 use app\controlador\beneficiariosC;
-use app\modelo\beneficiariosM;
-use app\modelo\conexionBD;
-use app\modelo\envConexion;
 
-require_once '../modelo/conexionBD.php';
-require_once '../modelo/envConexion.php';
-require_once '../controlador/beneficiariosC.php';
-require_once '../modelo/beneficiariosM.php';
-// require_once '../controlador/rolesC.php';
-// require_once '../modelo/rolesM.php';
+authC::requireRole([1]);
 
-class beneficiarioA{
-    public $id;
-    public function __construct()
-    {
-        if (isset($_POST["id"])) {
-            $this->id = $_POST["id"];
-        }
-    }
-    public function beneficiarioEditA(){
-        $valor = $this->id;
-        $datosObtenidosBeneficiarios = beneficiariosC::obtenerDatosBeneficiarioC($valor);
-        echo json_encode($datosObtenidosBeneficiarios);
-    }
+header('Content-Type: application/json; charset=utf-8');
+
+if ($_SERVER['REQUEST_METHOD'] !== 'POST' || !isset($_POST['id'])) {
+    http_response_code(400);
+    echo json_encode(['error' => 'Missing id']);
+    exit;
 }
-// if (isset($_POST["id"])) {
-//     $editarUsuario = new usuariosAjax;
-//     $editarUsuario -> id = $_POST["id"];
-//     $editarUsuario -> usuarioEditA();
-//     // usuariosAjax::setRolEditA($_POST["id"]);
-// }
-$recuperarDatosBeneficiario = new beneficiarioA;
-$recuperarDatosBeneficiario -> beneficiarioEditA();
-?>
+
+if (!authC::validateCsrf()) {
+    http_response_code(403);
+    echo json_encode(['error' => 'Invalid CSRF token']);
+    exit;
+}
+
+$datosObtenidosBeneficiarios = beneficiariosC::obtenerDatosBeneficiarioC((int) $_POST['id']);
+
+if (!$datosObtenidosBeneficiarios) {
+    http_response_code(404);
+    echo json_encode(['error' => 'Beneficiary not found']);
+    exit;
+}
+
+echo json_encode($datosObtenidosBeneficiarios);

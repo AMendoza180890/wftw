@@ -2,6 +2,10 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <form role="form" method="post" enctype="multipart/form-data">
+                <?php
+                use app\controlador\authC;
+                echo authC::csrfField();
+                ?>
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal">
                         <li class="fa fa-time"></li>
@@ -16,8 +20,8 @@
                             <input type="hidden" name="idEdit" id="idEdit">
                         </div>
                         <div class="form-group">
-                            <h2>Clave</h2>
-                            <input type="text" class="form-control input-lg" name="claveEdit" id="claveEdit" required>
+                            <h2>Nueva clave</h2>
+                            <input type="password" class="form-control input-lg" name="claveEdit" id="claveEdit" placeholder="Dejar vacio para mantener la actual">
                         </div>
                         <div class="form-group">
                             <h2>Rol</h2>
@@ -32,7 +36,7 @@
                         <div class="form-group">
                             <h2>Foto:</h2>
                             <input type="file" name="fotoEdit" id="fotoEdit">
-                            <p class="help-block">peso maximo permitido 200 Mb</p>
+                            <p class="help-block">Peso maximo permitido 2 MB</p>
                             <img src="app/vista/img/usuario/defecto.png" alt="imagen" class="img-thumbnail visor" width="100px;">
                             <input type="hidden" name="fotoActual" id="fotoActual">
                         </div>

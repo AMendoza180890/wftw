@@ -13,7 +13,7 @@ class homeC{
                             <!-- small box -->
                             <div class="small-box bg-aqua">
                                 <div class="inner">
-                                    <h3>'.$totalRecursos["total"]. '</h3>
+                                    <h3>' . e((string) $totalRecursos['total']) . '</h3>
                     
                                     <p>Total Recursos Registrados</p>
                                 </div>
@@ -54,7 +54,7 @@ class homeC{
                     <!-- small box -->
                     <div class="small-box bg-yellow">
                     <div class="inner">
-                        <h3>'.$totalUsuarios["total"].'</h3>
+                        <h3>' . e((string) $totalUsuarios['total']) . '</h3>
 
                         <p>Total Usuarios Registrados</p>
                     </div>
@@ -80,7 +80,7 @@ class homeC{
                 </div>
             </div>';
             }
-        } catch (exception $ex) {
+        } catch (Exception $ex) {
             echo 'Error -'.$ex;
         }
     }
@@ -120,7 +120,7 @@ class homeC{
     //             </div>
     //           </div>';
     //         }
-    //     } catch (exception $ex) {
+    //     } catch (Exception $ex) {
     //         echo 'Error -'.$ex;
     //     }
     // }
@@ -149,7 +149,7 @@ class homeC{
     //             echo '';
     //         }
 
-    //     } catch (exception $ex) {
+    //     } catch (Exception $ex) {
     //         echo 'Error -'.$ex;
     //     }
     // }
@@ -186,8 +186,8 @@ class homeC{
                     /*Aqui se agregan los recursos */
                 foreach ($conteoPorDiscapacidad as $key => $value) {
                         echo  '<div class="clearfix">
-                                 <span class="pull-left">'.$value["diagnostico"].'</span>
-                                 <small class="pull-right">'.$value["total"].'</small>
+                                 <span class="pull-left">' . e($value['diagnostico']) . '</span>
+                                 <small class="pull-right">' . e((string) $value['total']) . '</small>
                                </div>';   
                 }
 
@@ -198,7 +198,7 @@ class homeC{
                 </div>
               </div>';
             }
-        } catch (exception $ex) {
+        } catch (Exception $ex) {
             echo 'Error -'.$ex;
         }
     }
@@ -235,8 +235,8 @@ class homeC{
                     /*Aqui se agregan los recursos */
                 foreach ($conteoPorEdad as $key => $value) {
                         echo  '<div class="clearfix">
-                                 <span class="pull-left">'.$value["edad"].'</span>
-                                 <small class="pull-right">'.$value["total"].'</small>
+                                 <span class="pull-left">' . e($value['edad']) . '</span>
+                                 <small class="pull-right">' . e((string) $value['total']) . '</small>
                                </div>';   
                 }
 
@@ -247,7 +247,7 @@ class homeC{
                 </div>
               </div>';
             }
-        } catch (exception $ex) {
+        } catch (Exception $ex) {
             echo 'Error -'.$ex;
         }
     }
