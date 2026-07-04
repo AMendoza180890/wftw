@@ -8,7 +8,7 @@ use app\controlador\authC;
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>Volunteer | Administracion</title>
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-  <link rel="stylesheet" href="app/vista/bower_components/bootstrap/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
   <link rel="stylesheet" href="app/vista/bower_components/font-awesome/css/font-awesome.min.css">
   <link rel="stylesheet" href="app/vista/bower_components/Ionicons/css/ionicons.min.css">
   <link rel="stylesheet" href="app/vista/dist/css/AdminLTE.min.css">
@@ -34,12 +34,12 @@ if (isset($_SESSION['ingreso']) && $_SESSION['ingreso'] == true) {
 }
 ?>
 <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEv8FF1zOHTlWzRg=" crossorigin="anonymous"></script>
-<script src="app/vista/bower_components/jquery-ui/jquery-ui.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery-ui@1.13.3/dist/jquery-ui.min.js" integrity="sha384-oVpH0DXO9nadZxTmPSQo3YwWqfN/Up9aRDHCxLrw8A2LjkFNcM/XILw4KGMaL95z" crossorigin="anonymous"></script>
 <script src="https://cdn.datatables.net/v/dt/dt-2.2.2/datatables.min.js" integrity="sha384-2Ul6oqy3mEjM7dBJzKOck1Qb/mzlO+k/0BQv3D3C7u+Ri9+7OBINGa24AeOv5rgu" crossorigin="anonymous"></script>
 <script>
   $.widget.bridge('uibutton', $.ui.button);
 </script>
-<script src="app/vista/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/js/bootstrap.min.js" integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd" crossorigin="anonymous"></script>
 <script src="app/vista/bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
 <script src="app/vista/bower_components/fastclick/lib/fastclick.js"></script>
 <script src="app/vista/dist/js/adminlte.min.js"></script>

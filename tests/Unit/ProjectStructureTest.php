@@ -26,6 +26,16 @@ final class ProjectStructureTest extends TestCase
         $this->assertFileExists($this->projectRoot() . '/.env.example');
     }
 
+    public function testUnusedVulnerableBowerPackagesRemoved(): void
+    {
+        $root = $this->projectRoot() . '/app/vista/bower_components';
+        $this->assertDirectoryDoesNotExist($root . '/ckeditor');
+        $this->assertDirectoryDoesNotExist($root . '/bootstrap');
+        $this->assertDirectoryDoesNotExist($root . '/jquery-ui');
+        $this->assertDirectoryDoesNotExist($root . '/moment');
+        $this->assertDirectoryDoesNotExist($root . '/select2');
+    }
+
     public function testAtendidosQueryFilter(): void
     {
         $source = file_get_contents($this->projectRoot() . '/app/modelo/beneficiariosM.php');

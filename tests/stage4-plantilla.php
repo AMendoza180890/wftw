@@ -32,6 +32,10 @@ function assertNotContains(string $needle, string $haystack, string $label): voi
 assertContains('cdn.datatables.net/v/dt/dt-2.2.2/datatables.min.js', $source, 'DataTables 2.2.2 bundle loaded');
 assertContains('integrity="sha384-', $source, 'SRI attributes present');
 assertContains('jquery-3.7.1.min.js', $source, 'jQuery 3.7.1 pinned via CDN');
+assertContains('bootstrap@3.4.1', $source, 'Bootstrap 3.4.1 pinned via CDN');
+assertContains('jquery-ui@1.13.3', $source, 'jQuery UI 1.13.3 pinned via CDN');
+assertNotContains('bower_components/bootstrap', $source, 'vendored bootstrap removed');
+assertNotContains('bower_components/jquery-ui', $source, 'vendored jquery-ui removed');
 assertNotContains('demo.js', $source, 'demo.js removed from production');
 assertNotContains('dashboard.js', $source, 'dashboard.js removed from production');
 assertNotContains('morris.min.js', $source, 'unused morris.js removed');
