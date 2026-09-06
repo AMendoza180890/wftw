@@ -283,8 +283,9 @@ class beneficiariosC
             $beneficiarioAtendidoParametros = ['id' => $codigo, 'fechaAtendido' => $currentTime];
 
             if (beneficiariosM::beneficiarioAtendido($beneficiarioAtendidoParametros)) {
-                echo '<script>window.open("app/controlador/reporteBeneficiario.php?codValor=' . e((string) $codigo) . '");</script>';
-                echo '<script>window.location="catbeneficiario"</script>';
+                // El frontend (beneficiario.js) abre el reporte y refresca la lista
+                // tras confirmar la respuesta de esta peticion AJAX.
+                echo json_encode(['ok' => true, 'id' => $codigo]);
             } else {
                 echo 'Error - Ocurrio un error al hora de insertar';
             }

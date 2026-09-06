@@ -70,6 +70,14 @@ $(".beneficiarioAtendido").click(function() {
     $.post("index.php?ruta=catbeneficiario", {
         CodValorAtendido: codigo,
         csrf_token: window.WFTW_CSRF
+    }).done(function() {
+        // Marcado como atendido: descargar/abrir el reporte de entrega.
+        let url = "app/controlador/reporteBeneficiario.php?codValor=" + encodeURIComponent(codigo);
+        let enlace = document.createElement("a");
+        enlace.href = url;
+        document.body.appendChild(enlace);
+        enlace.click();
+        enlace.remove();
     }).always(function() {
         window.location = "catbeneficiario";
     });

@@ -9,7 +9,7 @@
                 ?>
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal">
-                        <li class="fa fa-time"></li>
+                        <i class="fa fa-times"></i>
                     </button>
                     <h3>Registrar Beneficiario</h3>
                 </div>
@@ -83,14 +83,22 @@
                             <select class="form-control input-lg" name="diagnostico" id="diagnostico">
                                 <option value="Sindrome Down">Sindrome Down</option>
                                 <option value="Paralisis Cerebral">Paralisis Cerebral</option>
-                                <option value="diagnostico3">diagnostico3</option>
+                                <option value="TEA">TEA (Transtorno del Espectro Autista)</option>
+                                <option value="Deficit Intelectual">Deficit Intelectual</option>
+                                <option value="Hidrocefalia">Hidrocefalia</option>
+                                <option value="Microcefalia">Microcefalia</option>
+                                <option value="Dislexia">Dislexia</option>
+                                <option value="Trastorno de Lenguaje">Trastorno de Lenguaje</option>
+                                <option value="TDAH">TDAH</option>
+                                <option value="Esquizofrenia">Esquizofrenia</option>
+                                <option value="TOC">TOC (Transtorno Obcesivo Compulsivo)</option>
                             </select>
                         </div>
 
                         <div class="form-group">
                             <h2>Foto:</h2>
                             <input type="file" name="fotoNuevo" id="fotoNuevo">
-                            <p class="help-block">peso maximo permitido 200 Mb</p>
+                            <p class="help-block">Peso maximo permitido 2 MB</p>
                         </div>
                     </div>
 

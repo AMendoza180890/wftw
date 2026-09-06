@@ -8,7 +8,7 @@
                 ?>
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal">
-                        <li class="fa fa-time"></li>
+                        <i class="fa fa-times"></i>
                     </button>
                     <h3>Editar Usuarios</h3>
                 </div>
@@ -25,8 +25,8 @@
                         </div>
                         <div class="form-group">
                             <h2>Rol</h2>
-                            <select name="rolEdit" class="form-control input-lg">
-                                <option id="rolEdit"></option>
+                            <select name="rolEdit" id="rolEdit" class="form-control input-lg">
+                                <option value="" hidden></option>
                                 <option value="1">Administrador</option>
                                 <option value="2">Invitado</option>
                                 <option value="3">Desactivado</option>

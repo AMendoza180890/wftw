@@ -27,7 +27,7 @@ class imagenUpload
                 return '';
             }
 
-            $name = $prefix . mt_rand(10, 999) . '.jpg';
+            $name = $prefix . bin2hex(random_bytes(8)) . '.jpg';
             $path = rtrim($directory, '/\\') . '/' . $name;
             imagejpeg($image, $path);
             imagedestroy($image);
@@ -41,7 +41,7 @@ class imagenUpload
                 return '';
             }
 
-            $name = $prefix . mt_rand(10, 999) . '.png';
+            $name = $prefix . bin2hex(random_bytes(8)) . '.png';
             $path = rtrim($directory, '/\\') . '/' . $name;
             imagepng($image, $path);
             imagedestroy($image);

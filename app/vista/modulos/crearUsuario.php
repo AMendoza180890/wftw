@@ -8,7 +8,7 @@
                 ?>
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal">
-                        <li class="fa fa-time"></li>
+                        <i class="fa fa-times"></i>
                     </button>
                     <h3>Crear Usuario</h3>
                 </div>

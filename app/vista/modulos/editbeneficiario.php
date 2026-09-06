@@ -8,7 +8,7 @@
                 ?>
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal">
-                        <li class="fa fa-time"></li>
+                        <i class="fa fa-times"></i>
                     </button>
                     <h3>Editar Informacion Beneficiario</h3>
                 </div>
@@ -104,7 +104,7 @@
                             <input type="file" name="fotoNuevoEdit" id="fotoNuevoEdit">
                             <img src="app/vista/img/beneficiario/defecto.png" alt="imagen" class="img-thumbnail visor" width="100px;">
                             <input type="hidden" name="fotoActual" id="fotoActual">
-                            <p class="help-block">peso maximo permitido 200 Mb</p>
+                            <p class="help-block">Peso maximo permitido 2 MB</p>
                         </div>
                     </div>
 
