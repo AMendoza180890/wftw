@@ -4,6 +4,17 @@ Sistema de registro para el evento **Wheels for the World**: gestión de benefic
 
 ---
 
+## Funcionalidades
+
+- **Beneficiarios**: registrar, editar, consultar, dar de baja/reactivar y marcar como *atendidos*.
+  Al marcar un beneficiario como atendido se genera y descarga automáticamente su **reporte de entrega en PDF** (dompdf).
+- **Catálogo de diagnósticos** unificado entre los formularios de registro y edición.
+- **Usuarios y roles**: alta, edición (incluida la selección correcta del rol actual) y desactivación de usuarios administradores.
+- **Dashboard** con conteos de usuarios y beneficiarios.
+- **Subida de fotos** de beneficiarios y usuarios con validación de tipo MIME, límite de 2 MB, re-codificación vía GD y nombres de archivo únicos.
+
+---
+
 ## Requisitos
 
 - PHP >= 8.1 (extensiones: `pdo_mysql`, `mbstring`, `gd`, `dom`)
@@ -125,7 +136,7 @@ Configura `.env` en el servidor con credenciales de producción y rota las contr
 | Bootstrap | 3.x | Estilos |
 | jQuery | 3.7 | Frontend |
 | DataTables | 2.2 | Tablas |
-| dompdf | ^2.0 | PDFs |
+| dompdf | ^3.1 | PDFs |
 | Composer | 2.x | Dependencias |
 
 ---
