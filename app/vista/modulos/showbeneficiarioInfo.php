@@ -4,7 +4,7 @@
             <form role="form" method="post" enctype="multipart/form-data">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal">
-                        <li class="fa fa-time"></li>
+                        <i class="fa fa-times"></i>
                     </button>
                     <h3>Informacion Beneficiario</h3>
                 </div>
@@ -86,9 +86,17 @@
                             <!-- <input type="text" class="form-control input-lg" name="direccion" id="direccion" disabled> -->
                             <select class="form-control input-lg" name="diagnosticoEdit" id="diagnosticoEdit" disabled>
                                 <option id="diagValor"></option>
-                                <option value="diagnostico1">diagnostico1</option>
-                                <option value="diagnostico2">diagnostico2</option>
-                                <option value="diagnostico3">diagnostico3</option>
+                                <option value="Sindrome Down">Sindrome Down</option>
+                                <option value="Paralisis Cerebral">Paralisis Cerebral</option>
+                                <option value="TEA">TEA (Transtorno del Espectro Autista)</option>
+                                <option value="Deficit Intelectual">Deficit Intelectual</option>
+                                <option value="Hidrocefalia">Hidrocefalia</option>
+                                <option value="Microcefalia">Microcefalia</option>
+                                <option value="Dislexia">Dislexia</option>
+                                <option value="Trastorno de Lenguaje">Trastorno de Lenguaje</option>
+                                <option value="TDAH">TDAH</option>
+                                <option value="Esquizofrenia">Esquizofrenia</option>
+                                <option value="TOC">TOC (Transtorno Obcesivo Compulsivo)</option>
                             </select>
                         </div>
                     </div>
